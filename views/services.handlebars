@@ -1,0 +1,53 @@
+<section class="container">
+
+<h1 class="PageTitle">WHAT WE OFFER?</h1>
+
+  <nav class="tabs mb-5">
+    <button class="tab-btn act" data-tab="commercials">Commercials</button>
+    <button class="tab-btn" data-tab="social">Social Media</button>
+    <button class="tab-btn" data-tab="brand">Brand Stories</button>
+  </nav>
+
+  <div class="tabs-content">
+    <div id="commercials" class="tab-panel act">
+      {{> commercials }}
+    </div>
+
+    <div id="social" class="tab-panel">
+      {{> social-media }}
+    </div>
+
+    <div id="brand" class="tab-panel">
+      {{> brand-stories }}
+    </div>
+  </div>
+
+</section>
+
+
+
+
+<script>
+const tabs = document.querySelectorAll('.tab-btn')
+const panels = document.querySelectorAll('.tab-panel')
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab
+
+    tabs.forEach(t => t.classList.remove('act'))
+    panels.forEach(p => p.classList.remove('act'))
+
+    tab.classList.add('act')
+    document.getElementById(target).classList.add('act')
+    history.replaceState(null, '', `#${target}`)
+  })
+})
+
+// deep-link support
+const hash = location.hash.replace('#', '')
+if (hash) {
+  document.querySelector(`[data-tab="${hash}"]`)?.click()
+}
+
+</script>

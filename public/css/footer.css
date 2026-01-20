@@ -1,0 +1,249 @@
+.line{
+    border-top: solid 3px #ffffff;
+    padding-top: 40px;
+}
+.menu {
+  width: max-content;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+.menu-title {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  margin: 6px 0;
+}
+
+.arrow-icon {
+  width: 14px;
+  height: 14px;
+  margin-left: 10px;
+}
+
+/* MIDDEN KOLOM */
+.footer-logo {
+  max-width: 30vw;
+}
+
+.lang-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.lang-btn {
+  width: 70px;
+  height: 25px;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.lang-btn:hover {
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
+/* RECHTER KOLOM */
+.footer-title {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.footer-contact a {
+  display: block;
+  margin: 0;
+  padding: 1px 0;
+  line-height: 1.1;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: underline;
+  font-size: 0.7rem;
+  display: block;
+  margin: 0;
+  padding: 2px 0;
+  line-height: 1.1;
+}
+
+.footer-link:hover {
+  opacity: 0.7;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12px;
+}
+
+.social-icon {
+  width: 18px;
+  height: 18px;
+  transition: 0.2s ease;
+}
+
+.footer-social a:hover .social-icon {
+  opacity: 0.6;
+}
+
+.footer-bottom {
+  text-align: center;
+  color: #bebebe;
+  font-size: 0.8rem;
+  margin-top: 20px;
+}
+
+.footer-bottom p {
+  margin: 0;
+  line-height: 1.1;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 767px) {
+  .footer-logo {
+    max-width: 50vw; /* groter op mobile */
+    margin-bottom: 30px;
+  }
+
+  /* Linkse kolom blijft links */
+  .col-md-4:first-child {
+    text-align: left !important;
+  }
+
+  /* Rechtse kolom blijft rechts */
+  .right-footer {
+    text-align: right !important;
+  }
+
+  .menu-title,
+  .footer-title {
+    font-size: 1rem;
+  }
+
+  .menu-item span,
+  .footer-link {
+    font-size: 0.85rem;
+  }
+
+  .arrow-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .social-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .lang-wrapper {
+    margin-top: 20px;
+  }
+}
+
+.menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  margin: 6px 0;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  opacity: 0.7;
+  color: white;
+}
+
+
+
+@font-face {
+    font-family: 'MyFont';
+    src: url('/fonts/HelveticaNeueRoman.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'MyFontBold';
+    src: url('/fonts/MonumentExtended-Ultrabold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'MyFontRegular';
+    src: url('/fonts/MonumentExtended-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'MyFontLight';
+    src: url('/fonts/HelveticaNeueLight.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'MyFontUltraLight';
+    src: url('/fonts/HelveticaNeueUltraLight.otf') format('opentype');
+}
+
+body {
+  font-family: 'MyFont', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #000000;
+}
+
+.bold {
+    font-family: 'MyFontBold', sans-serif;
+}
+
+.light {
+    font-family: 'MyFontLight', sans-serif;
+}
+
+.ultralight {
+    font-family: 'MyFontUltraLight', sans-serif;
+}
+
+.monregular{
+    font-family: 'MyFontRegular', sans-serif;
+}
+
+main {
+  flex: 1;
+}
+
+
+
+
+/* ----------------------------- */
+/* FONT LETTER SPACING           */
+/* ----------------------------- */
+
+/* Monregular - normaal blijven */
+.monregular {
+  letter-spacing: 1.5px;
+}
+
+/* Light - iets meer spacing */
+.light {
+  letter-spacing: 0.5px;
+}
+
+/* Ultralight - nog meer spacing */
+.ultralight {
+  letter-spacing: 1px;
+}

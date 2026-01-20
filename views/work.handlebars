@@ -1,0 +1,20 @@
+<section class="">
+  <div class="container">
+    <h1 class="PageTitle">SELECTED WORK</h1>
+    <div class="row g-4">
+      {{#each projects}}
+      <div class="col-sm-12 col-lg-6">
+        <div class="card text-white h-100">
+          <a href="/projects/{{this.id}}" class="stretched-link text-decoration-none text-white">
+            <img src="{{getCoverImage this}}" class="card-img-top img-fluid" alt="{{this.title}}">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">{{this.title}}</h5>
+            <h6 class="card-subtitle">{{this.slug}}</h6>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,88 @@
+[
+  {
+    "id": 1768660075182,
+    "title": "Hoeve Hazegras",
+    "slug": "Comercial Reels",
+    "brand": "HoeveHazeGras",
+    "coverImage": "/uploads/1768660040259-bmpei0.png",
+    "sections": [
+      {
+        "type": "CollageHeader",
+        "data": {
+          "images": [
+            "/uploads/1768660049193-8azrxr.png",
+            "/uploads/1768660049200-s8or1p.png",
+            "/uploads/1768660049206-pqe1du.png",
+            "/uploads/1768660049218-cx4vj4.png",
+            "/uploads/1768660049227-2td05n.png",
+            "/uploads/1768660049230-v8kvcd.png",
+            "/uploads/1768660049277-rcqzn5.png",
+            "/uploads/1768660049293-fgsnkm.png",
+            "/uploads/1768660049300-qzeoch.png",
+            "/uploads/1768660049301-x5yaa1.png"
+          ],
+          "text": "We created several reels and photos for Hoeve Hazegras to engage the audience to visit them."
+        }
+      }
+    ],
+    "createdAt": "2026-01-17T14:27:55.182Z"
+  },
+  {
+    "id": 1768569409692,
+    "title": "Celebrate life",
+    "slug": "Steel & Barnett - Wintercampaign",
+    "brand": "SteelAndBarnett",
+    "coverImage": "/uploads/1768569336891-41k5m5.png",
+    "sections": [
+      {
+        "type": "VideoText",
+        "data": {
+          "video": "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Wintercampaign%202025/Najaarscampagnevideo%20Steel%26Barnett%20Directors%20cut.mp4",
+          "text": "For this project, we created the Autumn Campaign for Steel & Barnett, a men’s jewelry brand with a strong yet refined aesthetic. The focus was on capturing the warmth and depth of the season, translating the brand’s identity into visuals that feel confident, modern, and timeless. A story of craftsmanship and character, told through rich red tones and elegant indoor settings. We also delivered short videos for the website to showcase the jewelry in fluid motion."
+        }
+      },
+      {
+        "type": "Reels",
+        "data": {
+          "videos": [
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Wintercampaign%202025/Reel%206%20-%20Valentine%20post%20%20-%20instagramsong.mp4",
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Wintercampaign%202025/Reel%203%20-%20Details%20-%20instagramsong.mp4",
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Wintercampaign%202025/Reel%204%20%20-%20Christmas%20%20-%20instagramsong.mp4",
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Wintercampaign%202025/Reel%208%20-%20Chess%20%20-%20licensed.mp4"
+          ]
+        }
+      }
+    ],
+    "createdAt": "2026-01-16T13:16:49.692Z"
+  },
+  {
+    "id": 1768567242097,
+    "title": "Salt & Stone",
+    "slug": "Campaign",
+    "brand": "SteelAndBarnett",
+    "coverImage": "/uploads/1768567168556-nrt713.png",
+    "sections": [
+      {
+        "type": "VideoText",
+        "data": {
+          "video": "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Summercampaign%202025/Campaignvideo%20SB%20Website.mp4",
+          "text": "For this project, we created a campaign for Steel & Barnett, a men’s jewelry brand with a strong yet refined aesthetic. The focus was on capturing the contrast between power and elegance, translating the brand’s identity into visuals that feel confident, modern, and timeless. A story of craftsmanship and character, told through detail and design. This campaign was filmed during summer with beautiful weather and landscapes. \nWe also delivered short videos that are used to put on the website to showcase the jewelry in a fluid motion. "
+        }
+      },
+      {
+        "type": "WebVideos",
+        "data": {
+          "videos": [
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Summercampaign%202025/SB%20Web%20Clip%20A.mp4",
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Summercampaign%202025/SB%20Web%20Clip%20B.mp4",
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Summercampaign%202025/SB%20web%20Clip%20C.mp4",
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Summercampaign%202025/SB%20Web%20Clip%20D.mp4",
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Summercampaign%202025/SB%20web%20clip%20F.mp4",
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Summercampaign%202025/SB%20Web%20Clip%20A.mp4"
+          ]
+        }
+      }
+    ],
+    "createdAt": "2026-01-16T12:40:42.097Z"
+  }
+]

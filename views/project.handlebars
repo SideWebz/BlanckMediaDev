@@ -1,0 +1,28 @@
+<article class="">
+  <div class="container">
+    <header class="project-header mb-0">
+      <h1 class="PageTitleLowerCase mb-0">{{project.title}}</h1>
+      {{#if project.brand}}
+        <p class="project-subtitle"><strong>{{project.slug}}</strong></p>
+      {{/if}}
+    </header>
+
+    <div class="project-sections mb-5">
+      {{#each project.sections}}
+        {{{renderSection this}}}
+      {{/each}}
+    </div>
+
+  <div class="project-navigation">
+  <a href="/work" class="nav-button nav-button-left">
+    <span class="icon-left"></span>
+    <span>BACK TO <br> PROJECTS</span>
+  </a>
+  {{#if relatedProjects.length}}
+    <a href="/projects/{{relatedProjects.0.id}}" class="nav-button nav-button-right">
+      <span>MORE FROM <br> THIS BRAND</span>
+      <span class="icon-right"></span>
+    </a>
+  {{/if}}
+</div>
+</article>
