@@ -119,6 +119,15 @@ button,
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Helvetica Neue light';
+  src: url('../fonts/HelveticaNeueLight.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 
 /* =========================================================
    TYPOGRAPHY – TEXT STYLES
