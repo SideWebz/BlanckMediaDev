@@ -17,7 +17,7 @@
 
 .project-subtitle {
   font-family: 'Helvetica Neue thin', Helvetica, Arial, sans-serif;
-  font-size: clamp(0.5rem, 2vw + 0.5rem, 1.0rem);
+  font-size: clamp(0.9rem, 2vw + 0.5rem, 1.4rem);
   font-weight: normal;
   color: #ffffff;
   margin: 0;
