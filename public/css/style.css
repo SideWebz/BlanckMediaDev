@@ -113,7 +113,7 @@ button,
 
 @font-face {
   font-family: 'Helvetica Neue Thin';
-  src: url('../fonts/HelveticaNeueUltraLight.otf') format('opentype');
+  src: url('../fonts/HelveticaNeueLight.otf') format('opentype');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
