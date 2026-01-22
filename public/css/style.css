@@ -453,6 +453,10 @@ span {
   color: #020617;
 }
 
+.card-white.card-title{
+  color: #000000;
+}
+
 .card-item.card-white h3 {
   color: #000000;
 }
@@ -465,12 +469,27 @@ span {
   text-transform: uppercase;
 }
 
+.card-title{
+  margin-bottom: 1rem;
+  font-family: "Syne", system-ui, sans-serif;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  text-transform: uppercase;
+}
+
 .small-p{
   opacity: 0.95;
   font-size: clamp(0.9rem, 1vw, 1rem);
 }
 
 .card-item p {
+  margin: 0;
+  opacity: 0.95;
+  font-size: clamp(0.9rem, 1vw, 1.1rem);
+  line-height: 1.5;
+  font-family: "Syne", system-ui, sans-serif;
+}
+
+.card-text{
   margin: 0;
   opacity: 0.95;
   font-size: clamp(0.9rem, 1vw, 1.1rem);
@@ -702,4 +721,115 @@ span {
 .title-icon {
   width: 22px;
   height: auto;
+}
+
+
+
+
+
+    /* Grid Layout */
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1.0fr 1.4fr;
+      grid-template-rows: repeat(8, 1fr);
+      gap: 20px;
+      height: 750px;
+    }
+
+    /* Linkse kolom */
+    .card:nth-child(1) {
+      grid-column: 1;
+      grid-row: 1 / 8;
+    }
+
+    .card:nth-child(2) {
+      grid-column: 1;
+      grid-row: 8 / 9;
+    }
+
+    /* Rechtse kolom */
+    .card:nth-child(3) {
+      grid-column: 2;
+      grid-row: 1 / 6;
+    }
+
+    .card:nth-child(4) {
+      grid-column: 2;
+      grid-row: 6 / 9;
+    }
+
+    /* Cards */
+    .card {
+      padding: 30px;
+      border-radius: 2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        height: auto;
+      }
+
+      .card {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+      }
+    }
+
+    .text-w-70 {
+      max-width: 70%;
+    }
+
+
+    /* Bottom section met image en button naast elkaar */
+.card > div:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+/* Image styling */
+.reels-image {
+  max-width: 130px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+/* Button styling */
+.contact-button {
+  background-color: transparent;
+  font-family: "Brand-Light", system-ui, sans-serif;
+  color: white;
+  border: 1px solid white;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: 100;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-size: clamp(0.5em, 1em + 0.2vw, 1.5em);
+}
+
+.contact-button:hover {
+  background-color: white;
+  color: #ff6b35;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .text-w-70 {
+    max-width: 100%;
+  }
+  
+  .reels-image {
+    max-width: 120px;
+  }
+  
+  .contact-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
 }
