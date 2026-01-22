@@ -73,6 +73,11 @@
 /* ----------------------------- */
 @media (max-width: 991px) {
 
+.navbar-brand img {
+  height: 12px;
+  object-fit: contain;
+}
+
 /* Zorg dat het icon soepel kan draaien */
 .menu-items .nav-link .menu-icon {
   transition: transform 0.3s ease;
