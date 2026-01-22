@@ -119,7 +119,7 @@ body {
 
 h1 {
   font-family: "Brand-Regular", system-ui, sans-serif;
-  font-size: clamp(2.0rem, 6.0vw, 4.2rem);
+  font-size: clamp(1.6rem, 6.0vw, 4.2rem);
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin: 0 0 0.0em;
@@ -127,7 +127,7 @@ h1 {
 
 h2 {
   font-family: "Syne", system-ui, sans-serif;
-  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-size: clamp(1.5rem, 4.5vw, 3rem);
   font-weight: 700;
   line-height: 1.15;
   margin: 0 0 0.5em;
@@ -135,7 +135,7 @@ h2 {
 
 h3 {
   font-family: "Brand-Regular", system-ui, sans-serif;
-  font-size: clamp(1.3rem, 3.0vw, 1.7rem);
+  font-size: clamp(1.1rem, 3.0vw, 1.7rem);
   font-weight: 600;
   line-height: 1.2;
   margin: 0 0 0.5em;
@@ -162,7 +162,7 @@ h5 {
 
 p {
   font-family: "Brand-Light", system-ui, sans-serif;
-  font-size: clamp(1.4rem, 2vw, 2rem);
+  font-size: clamp(1.3rem, 2vw, 2rem);
   font-weight: 50;
   margin: 0 0 1em;
 }
@@ -171,7 +171,7 @@ b,
 strong {
   font-family: "Brand-UltraBold", system-ui, sans-serif;
   font-weight: 900;
-  font-size: clamp(0.5em, 0.7em + 0.2vw, 1.05em);
+  font-size: clamp(0.5em, 0.5em + 0.2vw, 1.05em);
   line-height: 1.2;
   letter-spacing: 0.1em;
 }
@@ -196,7 +196,7 @@ span {
 
   text-decoration: none;
   font-family: "Brand-Regular", system-ui, sans-serif;
-  font-size: clamp(0.85rem, 1rem + 0.3vw, 1.5rem);
+  font-size: clamp(0.80rem, 0.7rem + 0.3vw, 1.5rem);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 
@@ -283,7 +283,7 @@ span {
   align-items: center;            /* vertical align */
   gap: 1rem;                      /* ruimte tussen pijl en tekst */
   font-family: "Brand-Regular", system-ui, sans-serif;
-  font-size: clamp(2.0rem, 6.0vw, 4.2rem); /* jouw clamp voor tekst */
+  font-size: clamp(1.6rem, 6.0vw, 4.2rem); /* jouw clamp voor tekst */
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin: 0;
