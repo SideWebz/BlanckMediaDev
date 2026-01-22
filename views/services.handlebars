@@ -1,45 +1,105 @@
-<section class="container">
-
-<h1 class="PageTitle">WHAT WE OFFER?</h1>
-
-  <nav class="tabs mb-5">
-    <button class="tab-btn act" data-tab="commercials">Commercials</button>
-    <button class="tab-btn" data-tab="social">Social Media</button>
-    <button class="tab-btn" data-tab="brand">Brand Stories</button>
-  </nav>
-
-  <div class="tabs-content">
-    <div id="commercials" class="tab-panel act">
-      {{> commercials }}
-    </div>
-
-    <div id="social" class="tab-panel">
-      {{> social-media }}
-    </div>
-
-    <div id="brand" class="tab-panel">
-      {{> brand-stories }}
+<section>
+  <div class="header-no-image">
+    <div class="container">
+      <h1 class="text-center mt-5 mb-5">WHAT WE OFFER?</h1>
+      
+      <div class="mb-0">
+        <div class="row g-3 justify-content-center tabs-mobile-layout">
+          <div class="col-6 col-md-6 col-lg-4">
+            <button class="btn-primary w-100 active-tab" data-tab="commercials">Commercials</button>
+          </div>
+          <div class="col-6 col-md-6 col-lg-4">
+            <button class="btn-primary w-100" data-tab="social">Social Media</button>
+          </div>
+          <div class="col-8 col-md-6 col-lg-4 mx-auto">
+            <button class="btn-primary w-100" data-tab="brand">Brand Stories</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
+  <div class="container">
+    <div class="tabs-content">
+      <div id="commercials" class="tab-panel active-panel">
+        {{> commercials }}
+      </div>
+
+      <div id="social" class="tab-panel">
+        {{> social-media }}
+      </div>
+
+      <div id="brand" class="tab-panel">
+        {{> brand-stories }}
+      </div>
+    </div>
+  </div>
 </section>
 
+<style>
+.tab-panel {
+  display: none;
+}
 
+.tab-panel.active-panel {
+  display: block;
+}
 
+.btn-primary.active-tab {
+  background-color: #ffffff;
+  color: #020617;
+}
+
+/* Verwijder de pijl voor deze specifieke h1 */
+.header-no-image h1 {
+  display: block;
+}
+
+.header-no-image h1::before {
+  content: none;
+}
+
+/* Mobile layout: derde button gecentreerd onder de eerste twee */
+@media (max-width: 767px) {
+  .tabs-mobile-layout {
+    max-width: 500px;
+    margin-inline: auto;
+  }
+  
+  /* Header groeit naar beneden op mobile */
+  .header-no-image::before {
+    padding-top: 80%; /* meer hoogte op mobile zodat content niet omhoog vliegt */
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .header-no-image::before {
+    padding-top: 55%; /* medium hoogte op tablet */
+  }
+}
+
+/* Desktop: originele hoogte */
+@media (min-width: 1200px) {
+  .header-no-image::before {
+    padding-top: 45%; /* originele hoogte */
+  }
+}
+</style>
 
 <script>
-const tabs = document.querySelectorAll('.tab-btn')
+const tabs = document.querySelectorAll('.btn-primary[data-tab]')
 const panels = document.querySelectorAll('.tab-panel')
 
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
     const target = tab.dataset.tab
 
-    tabs.forEach(t => t.classList.remove('act'))
-    panels.forEach(p => p.classList.remove('act'))
+    tabs.forEach(t => t.classList.remove('active-tab'))
+    panels.forEach(p => p.classList.remove('active-panel'))
 
-    tab.classList.add('act')
-    document.getElementById(target).classList.add('act')
+    tab.classList.add('active-tab')
+    document.getElementById(target).classList.add('active-panel')
     history.replaceState(null, '', `#${target}`)
   })
 })
@@ -49,5 +109,4 @@ const hash = location.hash.replace('#', '')
 if (hash) {
   document.querySelector(`[data-tab="${hash}"]`)?.click()
 }
-
 </script>

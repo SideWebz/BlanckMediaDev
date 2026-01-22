@@ -1,672 +1,705 @@
-/* =========================================================
-   IMPORTS
-   ========================================================= */
-
-/* Fonts */
-@import url('../fonts/HelveticaNeueMedium.otf');
-
-
-/* =========================================================
-   CSS VARIABLES (THEME)
-   ========================================================= */
-
-:root {
-  /* Colors */
-  --color-black: #000000;
-  --color-darkgray: #1f1f1f;
-  --color-yellow: #FFD700;
-  --color-white: #ffffff;
-
-  /* Typography */
-  --font-sans: 'Helvetica Neue', Arial;
-}
-
-
-/* =========================================================
-   BASE / RESET
-   ========================================================= */
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  font-family: var(--font-sans);
-  color: var(--color-white);
-  background-color: var(--color-black);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--color-white);
-}
-
-a {
-  color: var(--color-white);
-  text-decoration: none;
-}
-
-button,
-.btn {
-  border-radius: 0.25rem;
-}
-
-
-/* =========================================================
-   LAYOUT
-   ========================================================= */
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-/* Responsive container padding */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 25px;
-  }
-}
-
-
-/* =========================================================
-   TYPOGRAPHY – FONT FACES
-   ========================================================= */
+/* ==================================================
+   FONT IMPORTS (LOCAL)
+   ================================================== */
 
 @font-face {
-  font-family: 'Monument Extended';
-  src: url('../fonts/MonumentExtended-Ultrabold.otf') format('opentype');
+  font-family: "Brand-Regular";
+  src: url("/fonts/MonumentExtended-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Brand-UltraBold";
+  src: url("/fonts/MonumentExtended-UltraBold.otf") format("opentype");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Monument Extended Regular';
-  src: url('../fonts/MonumentExtended-Regular.otf') format('opentype');
-  font-weight: 200;
+  font-family: "Syne";
+  src: url("/fonts/Syne-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 50 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Helvetica Neue Medium';
-  src: url('../fonts/HelveticaNeueMedium.otf') format('opentype');
+  font-family: "Brand-Light";
+  src: url("/fonts/HelveticaNeueLight.otf") format("opentype");
+  font-weight: 50;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ==================================================
+   ROOT VARIABLES
+   ================================================== */
+
+:root {
+  --color-bg: #000000;
+  --color-surface: #111827;
+  --color-primary: #ff8f06;
+  --color-text: #e5e7eb;
+
+  --max-width: 1200px;
+  --radius: 0.75rem;
+  --padding-inline: clamp(1rem, 4vw, 2rem);
+}
+
+/* ==================================================
+   RESET / BASE
+   ================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Brand-Regular", system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* ==================================================
+   CONTAINER
+   ================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--padding-inline);
+}
+
+
+/* ==================================================
+   RESPONSIVE MARGIN UTILITIES
+   ================================================== */
+
+/* Margin Bottom */
+.mb-1  { margin-bottom: clamp(0.25rem, 0.5vw, 0.5rem); }
+.mb-2  { margin-bottom: clamp(0.5rem, 0.8vw, 0.75rem); }
+.mb-3  { margin-bottom: clamp(0.75rem, 1vw, 1rem); }
+.mb-4  { margin-bottom: clamp(1rem, 1.5vw, 1.5rem); }
+.mb-5  { margin-bottom: clamp(1.25rem, 2vw, 2rem); }
+.mb-6  { margin-bottom: clamp(1.5rem, 2.5vw, 2.5rem); }
+.mb-7  { margin-bottom: clamp(2rem, 3vw, 3rem); }
+.mb-8  { margin-bottom: clamp(2.5rem, 4vw, 4rem); }
+.mb-9  { margin-bottom: clamp(3rem, 7vw, 9rem); }
+.mb-10 { margin-bottom: clamp(7rem, 10vw, 12rem); }
+.mb-15 { margin-bottom: clamp(8rem, 14vw, 16rem); }
+
+/* Margin Top */
+.mt-1  { margin-top: clamp(0.25rem, 0.5vw, 0.5rem); }
+.mt-2  { margin-top: clamp(0.5rem, 0.8vw, 0.75rem); }
+.mt-3  { margin-top: clamp(0.75rem, 1vw, 1rem); }
+.mt-4  { margin-top: clamp(1rem, 1.5vw, 1.5rem); }
+.mt-5  { margin-top: clamp(1.25rem, 2vw, 2rem); }
+.mt-6  { margin-top: clamp(1.5rem, 2.5vw, 2.5rem); }
+.mt-7  { margin-top: clamp(2rem, 3vw, 3rem); }
+.mt-8  { margin-top: clamp(2.5rem, 4vw, 4rem); }
+.mt-9  { margin-top: clamp(3rem, 7vw, 9rem); }
+.mt-10 { margin-top: clamp(7rem, 10vw, 12rem); }
+.mt-15 { margin-top: clamp(8rem, 14vw, 16rem); }
+
+
+
+/* ==================================================
+   TYPOGRAPHY — EXPLICIT PER HEADING
+   ================================================== */
+
+h1 {
+  font-family: "Brand-Regular", system-ui, sans-serif;
+  font-size: clamp(2.0rem, 6.0vw, 4.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.0em;
+}
+
+h2 {
+  font-family: "Syne", system-ui, sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+
+h3 {
+  font-family: "Brand-Regular", system-ui, sans-serif;
+  font-size: clamp(1.3rem, 3.0vw, 1.7rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+  letter-spacing: 0.07em;
+}
+
+h4 {
+  font-family: "Syne", system-ui, sans-serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0 0 0.5em;
+}
+
+h5 {
+  font-family: "Brand-UltraBold", system-ui, sans-serif;
+  font-size: clamp(1.0rem, 2vw, 1.2rem);
   font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue Thin';
-  src: url('../fonts/HelveticaNeueLight.otf') format('opentype');
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Helvetica Neue light';
-  src: url('../fonts/HelveticaNeueLight.otf') format('opentype');
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.5em;
 }
 
 
-
-/* =========================================================
-   TYPOGRAPHY – TEXT STYLES
-   ========================================================= */
-
-.thin-font-helvetica {
-  font-family: 'Helvetica Neue Thin', Arial;
-  font-weight: 100;
-  font-size: clamp(1.3rem, 2.5vw, 2rem);
-  text-transform: uppercase;
-}
-.thin-font-helvetica-bottom {
-  font-family: 'Helvetica Neue Thin', Arial;
-  font-weight: 100;
-  font-size: clamp(0.80rem, 2.5vw, 2rem);
-  text-transform: uppercase;
+p {
+  font-family: "Brand-Light", system-ui, sans-serif;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  font-weight: 50;
+  margin: 0 0 1em;
 }
 
-.TitleMain {
-  font-family: 'Monument Extended Regular', Arial;
-  font-weight: 300;
-  font-size: clamp(0.9rem, 3vw, 1.9rem);
-  text-transform: uppercase;
+b,
+strong {
+  font-family: "Brand-UltraBold", system-ui, sans-serif;
+  font-weight: 900;
+  font-size: clamp(0.5em, 0.7em + 0.2vw, 1.05em);
+  line-height: 1.2;
+  letter-spacing: 0.1em;
 }
 
-.small-monument {
-  font-family: 'Monument Extended Regular', Arial;
-  font-weight: 400;
-  font-size: clamp(0.6rem, 2vw, 1rem);
-  text-transform: uppercase;
-}
-
-.PageTitle {
-  margin-top: 10rem;
-  margin-bottom: 5rem;
-  text-align: center;
-  font-family: 'Monument Extended Regular', Arial;
-  font-weight: 400;
-  font-size: clamp(1.5rem, 5vw, 3rem);
-  text-transform: uppercase;
-}
-
-.PageTitleLowerCase {
-  margin-top: 10rem;
-  margin-bottom: 5rem;
-  text-align: center;
-  font-family: 'Monument Extended Regular', Arial;
-  font-weight: 400;
-  font-size: clamp(1.5rem, 5vw, 3rem);
+span {
+  font-family: "Brand-Light", system-ui, sans-serif;
+  font-size: clamp(0.5em, 1em + 0.2vw, 1.5em);
+  line-height: 1.2;
+  letter-spacing: 0.1em;
 }
 
 
-/* =========================================================
-   TEXT & COLOR HELPERS
-   ========================================================= */
+/* ==================================================
+   PRIMARY PILL BUTTON (INVERT ON HOVER)
+   ================================================== */
 
-.text-primary {
-  color: var(--color-white) !important;
-}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 
-.text-secondary {
-  color: var(--color-darkgray) !important;
-}
-
-.text-accent {
-  color: var(--color-yellow) !important;
-}
-
-.bg-accent {
-  background-color: var(--color-yellow) !important;
-  color: var(--color-black) !important;
-}
-
-
-/* =========================================================
-   SPACING UTILITIES
-   ========================================================= */
-
-.py-1 {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
-.py-3 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-.space {
-  margin-top: 10rem;
-  margin-bottom: 10rem;
-}
-
-.mb-10 {
-  margin-bottom: 10rem;
-}
-
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-
-.btn-custom {
-  font-family: 'Monument Extended Regular', Arial;
-  text-transform: uppercase;
-  font-size: clamp(0.5rem, 3vw, 1rem);
-  padding: 1rem 3rem;
-  background: transparent;
-  border: 2px solid white;
-  color: white;
-  border-radius: 50px;
   text-decoration: none;
+  font-family: "Brand-Regular", system-ui, sans-serif;
+  font-size: clamp(0.85rem, 1rem + 0.3vw, 1.5rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  padding: clamp(0.65rem, 1vw, 0.85rem)
+           clamp(1.2rem, 2.5vw, 1.75rem);
+
+  border-radius: 9999px;
+  border: 2px solid #ffffff;
+
+  background-color: transparent;
+  color: #ffffff;
+
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+/* Hover */
+.btn-primary:hover {
+  background-color: #ffffff;
+  color: #020617;
+}
+
+/* Active / Clicked */
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+/* Focus (keyboard) */
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(255, 255, 255);
+}
+
+/* Disabled */
+.btn-primary:disabled,
+.btn-primary[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Basis styling: full width, height auto */
+.header-image {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* De img itself */
+.header-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* behoud aspect ratio, snijdt waar nodig */
+  object-position: bottom;    /* snijdt van de bovenkant af */
+}
+
+/* Landscape / breedbeeld: 80% van viewport height */
+@media (orientation: landscape) {
+  .header-image {
+    height: 80vh;  /* 80% van schermhoogte */
+  }
+}
+
+/* Default: portrait / small devices: auto height */
+@media (orientation: portrait) {
+  .header-image {
+    height: auto; /* past zich natuurlijk aan */
+  }
+}
+
+
+/* ==================================================
+   HEADER IMAGE 2
+   ================================================== */
+
+.header-image-2 h1 {
+  display: inline-flex;           /* flex zodat pijl + tekst naast elkaar */
+  align-items: center;            /* vertical align */
+  gap: 1rem;                      /* ruimte tussen pijl en tekst */
+  font-family: "Brand-Regular", system-ui, sans-serif;
+  font-size: clamp(2.0rem, 6.0vw, 4.2rem); /* jouw clamp voor tekst */
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: #fff;
+}
+
+/* Pijl naast tekst */
+.header-image-2 h1::before {
+  content: '';
   display: inline-block;
+  width: clamp(30px, 5vw, 50px);  /* schaalbaar van mobiel tot desktop */
+  height: clamp(30px, 5vw, 50px);
+  background-image: url('/svg/BlanckMedia-OrangeArrow.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+
+.header-image-2 {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;  /* optioneel: content onderaan */
+  justify-content: center;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+/* Aspect ratio spacer (zoals footer ::before) */
+.header-image-2::before {
+  content: '';
+  display: block;
+  padding-top: 45%; /* hoogte verhouding, pas aan indien nodig */
+}
+
+/* Achtergrond afbeelding */
+.header-image-2::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/header-image-blanckmedia.png'); /* je nieuwe image */
+  background-size: 100% 100%; /* vul container, snijd indien nodig */
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+/* Grote schermen: crop onderkant */
+@media (min-width: 1600px) {
+  .header-image-2::after {
+    background-size: cover;       /* vul container, snijd waar nodig */
+    background-position: top center; /* knip van bovenkant af */
+  }
+}
+
+.header-image-2 .container {
+  position: relative;
+  z-index: 1; /* content boven de afbeelding */
+  width: 100%;
+}
+
+
+
+/* ==================================================
+   HEADER NO IMAGE
+   ================================================== */
+
+.header-no-image {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+/* EXACT ZELFDE aspect ratio spacer als header-image-2 */
+.header-no-image::before {
+  content: '';
+  display: block;
+  padding-top: 45%; /* exact zelfde als header-image-2 */
+}
+
+.header-no-image > * {
+  position: relative;
+  z-index: 1; /* content boven de spacer */
+}
+
+
+/* Bounce animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+.scroll-arrow {
+  width: clamp(25px, 5vw, 35px);   /* min 25px, max 35px, schaalt met viewport */
+  height: clamp(25px, 5vw, 35px);
+  cursor: pointer;
+  animation: bounce 2s infinite;
+  transition: transform 0.2s ease;
+}
+
+
+/* Optional: hover slightly enlarge */
+.scroll-arrow:hover {
+  transform: scale(1.1);
+}
+
+/* Overlapping cards container */
+.overlapping-cards {
+  display: flex;
+  position: relative;
+  margin-top: clamp(2rem, 4vw, 4rem);
+  width: 100%;
+}
+
+/* Basis card styling - ALLE KAARTEN ZELFDE BREEDTE */
+.card-item {
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: 2rem;
+  position: relative;
+  min-height: 350px;
+  max-height: 350px;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Desktop: Overlap effect horizontaal */
+.card-item:nth-child(1) {
+  z-index: 1;
+  margin-right: -80px;
+}
+
+.card-item:nth-child(2) {
+  z-index: 2;
+  margin-right: -80px;
+}
+
+.card-item:nth-child(3) {
+  z-index: 3;
+}
+
+/* Kleuren */
+.card-gray {
+  background: #1A1A1A;
+  color: #ffffff;
+}
+
+.card-orange {
+  background: linear-gradient(135deg, #B03800 0%, #F5C252 100%);
+  color: #ffffff;
+}
+
+.card-white {
+  background: #F3F3E9;
+  color: #020617;
+}
+
+.card-item.card-white h3 {
+  color: #000000;
+}
+
+.card-item h3 {
+  margin-bottom: 1rem;
+  color: #ffffff;
+  font-family: "Syne", system-ui, sans-serif;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  text-transform: uppercase;
+}
+
+.small-p{
+  opacity: 0.95;
+  font-size: clamp(0.9rem, 1vw, 1rem);
+}
+
+.card-item p {
+  margin: 0;
+  opacity: 0.95;
+  font-size: clamp(0.9rem, 1vw, 1.1rem);
+  line-height: 1.5;
+  font-family: "Syne", system-ui, sans-serif;
+}
+
+/* Person details styling */
+.person-details {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  margin-top: 1.5rem;
+}
+
+.person-details img {
+  width: clamp(2.5rem, 4vw, 3.5rem);
+  height: clamp(2.5rem, 4vw, 3.5rem);
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.person-details > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.person-details p {
+  margin: 0;
+  line-height: 1.2;
+  font-size: clamp(0.75rem, 0.9vw, 0.9rem);
+}
+
+.person-details p:first-of-type {
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.person-details p:last-of-type {
+  opacity: 0.8;
+  font-size: clamp(0.7rem, 0.85vw, 0.85rem);
+}
+
+/* Mobile: verticaal met overlap naar boven */
+@media (max-width: 767px) {
+  .overlapping-cards {
+    flex-direction: column;
+  }
+  
+  .card-item {
+    max-height: 320px;
+    width: 100%;
+  }
+  
+  .card-item:nth-child(1) {
+    margin-right: 0;
+    margin-bottom: -60px;
+    z-index: 3;
+  }
+  
+  .card-item:nth-child(2) {
+    margin-right: 0;
+    margin-bottom: -60px;
+    z-index: 2;
+  }
+  
+  .card-item:nth-child(3) {
+    margin-right: 0;
+    z-index: 1;
+  }
+}
+
+/* Tablet: 2 boven naast elkaar, 1 onder */
+@media (min-width: 768px) and (max-width: 991px) {
+  .overlapping-cards {
+    flex-wrap: wrap;
+  }
+  
+  .card-item {
+    max-height: 330px;
+  }
+  
+  .card-item:nth-child(1) {
+    flex: 1 1 50%;
+    margin-right: -60px;
+    margin-bottom: -60px;
+    z-index: 2;
+  }
+  
+  .card-item:nth-child(2) {
+    flex: 1 1 50%;
+    margin-right: 0;
+    margin-bottom: -60px;
+    z-index: 2;
+  }
+  
+  .card-item:nth-child(3) {
+    flex: 1 1 100%;
+    margin-right: 0;
+    z-index: 1;
+  }
+}
+
+.package-card {
+  padding: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  border-radius: 2.5rem;
+  text-align: center;
   transition: all 0.3s ease;
 }
 
-.btn-custom:hover {
-  background: white;
-  color: black;
+/* Eerste kaart – gevuld */
+.packages-cards .col-12:first-child .package-card {
+  background-color: #F3F3E9;
+  border: 2px solid #F3F3E9;
+  color: #000;
+}
+
+.packages-cards .col-12:not(:first-child) .package-card {
+  border: 2px solid #F3F3E9;
+  color: #F3F3E9;
 }
 
 
-/* =========================================================
-   IMAGES – HERO
-   ========================================================= */
-
-.hero-image {
-  height: 40vh;
+/* Zorg dat tekst in lijsten meeschakelt */
+.package-card ul,
+.package-card li,
+.package-card h3,
+.package-card p {
+  color: inherit;
 }
 
-@media (min-width: 768px) {
-  .hero-image {
-    height: 60vh;
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero-image {
-    height: 80vh;
-  }
-}
-
-
-/* =========================================================
-   IMAGES – WORK / GRID
-   ========================================================= */
-
-.work-image {
-  border-radius: 0;
-}
-
-@media (max-width: 767px) {
-  .work-image {
-    border-radius: 15px;
-  }
-
-  .PageTitle {
-  margin-top: 7rem;
-  margin-bottom: 3rem;
-  text-align: center;
-  font-family: 'Monument Extended Regular', Arial;
-  font-weight: 400;
-  font-size: clamp(1.5rem, 5vw, 3rem);
-  text-transform: uppercase;
-}
-  
-.PageTitleLowerCase {
-  margin-top: 7rem;
-  margin-bottom: 3rem;
-  text-align: center;
-  font-family: 'Monument Extended Regular', Arial;
-  font-weight: 400;
-  font-size: clamp(1.5rem, 5vw, 3rem);
-}
-
-.card a {
-  display: block;
-  overflow: hidden;
-  border-radius: 15px;
-}
-}
-
-/* =========================================================
-   PROJECT GRID ITEM
-   ========================================================= */
-
-.card {
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  height: 100%;
-  margin-bottom: 20px;
-}
-
-
-/* =========================================================
-   IMAGE AS CARD – ALWAYS LANDSCAPE
-   ========================================================= */
-
-.card a {
-  display: block;
-  overflow: hidden;
-  border-radius: 7px;
-}
-
-/* Landscape image that scales on all devices */
-.card-img-top {
-  width: 100%;
-  aspect-ratio: 16 / 10;      /* ALWAYS landscape */
-  height: auto;
-
-  object-fit: cover;
-  display: block;
-
-  transition: transform 0.4s ease, filter 0.4s ease;
-}
-
-
-/* =========================================================
-   TITLE BELOW IMAGE
-   ========================================================= */
-
-.card-body {
-  padding: 1rem 0 0;
-}
-
-.card-title {
-  font-family: 'Monument Extended', Arial;
-  font-size: clamp(1.2rem, 2vw, 1.2rem);
-  letter-spacing: 0.08em;
-  margin: 0 0 6px 0;
-}
-
-.card-subtitle {
-  font-family: 'Helvetica Neue Thin', Arial;
-  font-size: clamp(0.8rem, 2vw, 0.9rem);
-  letter-spacing: 0.2em;
-  margin: 0;
-  opacity: 0.8;
-}
-
-
-/* =========================================================
-   HOVER – SUBTLE & PREMIUM
-   ========================================================= */
-
-.card:hover .card-img-top {
-  transform: scale(1.03);
-  filter: brightness(0.9);
-}
-
-
-/* =========================================================
-   TOUCH DEVICES – DISABLE HOVER FX
-   ========================================================= */
-
-@media (hover: none) {
-  .card:hover .card-img-top {
-    transform: none;
-    filter: none;
-  }
-}
-
-
-@media (max-width: 767px) {
-  .card a {
-    border-radius: 15px;
-  }
-}
-
-
-.space-2 {
-  margin-top: 10rem;
-  margin-bottom: 10rem;
-}
-
-/* mobile override */
-@media (max-width: 768px) {
-  .space-2 {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  .mb-10 {
-    margin-bottom: 5rem;
-  }
-}
-
-.tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  font-size: 1.2rem;
-  justify-content: center;
-  align-items: center;
-  max-width: 100%;
-}
-
-.tab-btn {
-  flex: 1 1 auto;
-  min-width: 200px;
-  max-width: 280px;
-  border-radius: 299px;
-  padding: 13px 20px;
-  padding-top: 15px;
-  position: relative;
-  transition: all 0.2s ease;
-  background-color: transparent;
-  border: solid 4px rgb(255, 255, 255);
-  color: white;
-  font-family: 'Monument Extended Regular', Arial;
-  text-transform: uppercase;
-  text-align: center;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.tab-btn:hover {
-  background-color: rgb(255, 255, 255);
-  color: black;
-}
-
-.tab-btn.act {
-  opacity: 1;
-  border: solid 4px white;
-  background-color: white;
-  color: black;
-}
-
-.tab-panel {
-  display: none;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.tab-panel.act {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.intro {
-  padding: 0px 150px;
-  margin-bottom: 3rem;
-}
-
-/* Tablet: 2 buttons naast elkaar, 1 eronder */
-@media (max-width: 992px) {
-  .tabs {
-    gap: 1rem;
-  }
-  
-  .tab-btn {
-    flex: 1 1 calc(50% - 0.5rem);
-    min-width: 180px;
-    max-width: none;
-    font-size: 1.1rem;
-  }
-  
-  .tab-btn:nth-child(3) {
-    flex: 1 1 100%;
-    max-width: 280px;
-    margin: 0 auto;
-  }
-  .intro {
-  padding: 0px 50px;
-}
-}
-
-/* Mobile: alle 3 onder elkaar */
-@media (max-width: 576px) {
-  .tabs {
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-  }
-  
-  .tab-btn {
-    flex: 1 1 100%;
-    width: 100%;
-    max-width: 100%;
-    min-width: auto;
-    font-size: 1rem;
-    padding: 12px 20px;
-  }
-  
-  .tab-btn:nth-child(3) {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-
-  .intro {
-  padding: 0px 10px;
-}
-}
-/* ---------- Page ---------- */
-
-.tab-page {
-  text-align: center;
-  font-family: 'Monument Extended Regular', Arial;
-  text-transform: uppercase;
-  margin-top: 7rem;
-  margin-bottom: 7rem;
-}
-
-.subtext {
-  font-family: 'Helvetica Neue', Arial;
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  letter-spacing: 0;
-  margin: 0;
-  text-transform: none;
-}
-
-/* ---------- Text blocks container ---------- */
-
-.text-blocks-container {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: max-content;
-  gap: 7rem;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 40px;
-  justify-content: center;
-}
-
-/* ---------- Text block ---------- */
-
-.text-block {
+.package-card ul{
   text-align: left;
-}
-
-.text-block h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.3rem;
-  font-weight: bold;
-  font-family: 'Helvetica Neue', Arial;
-  text-transform: none;
-}
-
-.text-block p {
-  font-size: 1.5rem;
-  line-height: 1.2;
-  font-family: 'Helvetica Neue Thin', Arial;
-  text-transform: none;
-  letter-spacing: 0.05em;
-}
-
-/* ---------- Tablet ---------- */
-/* 2 naast elkaar, 1 eronder — zelfde breedte, compacter */
-
-@media (max-width: 992px) {
-  .text-blocks-container {
-    grid-auto-flow: row;
-    grid-template-columns: repeat(2, max-content);
-    justify-content: center;
-    gap: 5rem;
-  }
-
-  .text-block {
-    text-align: center;
-  }
-
-  .text-block:nth-child(3) {
-    grid-column: 1 / -1;
-    justify-self: center;
-    text-align: center;
-  }
-}
-
-/* ---------- Mobile ---------- */
-/* Alles onder elkaar — gecentreerd */
-
-@media (max-width: 576px) {
-  .text-blocks-container {
-    grid-template-columns: max-content;
-    gap: 2rem;
-    padding: 0 20px;
-  }
-
-  .text-block {
-    text-align: center;
-    justify-self: center;
-  }
-
-  .text-block h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-  }
+  font-family: "Syne", system-ui, sans-serif;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
 }
 
 
-
-/* =========================================================
-   Contact
-   ========================================================= */
-
-/* Underline input style */
-.contact-form .form-control {
-  border: none;
-  border-bottom: 1px solid var(--color-white);
-  background: transparent;
-  color: var(--color-white);
-  font-family: 'Helvetica Neue regular', Arial;
-  border-radius: 0;
-  padding: 0.6rem 0;
+.package-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
-/* Remove Bootstrap focus styles */
-.contact-form .form-control:focus {
-  background: transparent;
-  color: var(--color-white);
-  box-shadow: none;
-  border-color: var(--color-white);
+/* Titel boven */
+.package-card h4 {
+  margin-bottom: 2rem;
 }
 
-/* Placeholder style */
-.contact-form .form-control::placeholder {
-  color: rgba(255, 255, 255, 0.6);
-}
-.form-label {
-  font-family: 'Helvetica Neue Medium', Arial;
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  margin-bottom: 0.5rem;
+/* Knop onderaan */
+.plan-btn {
+  margin-top: auto;
+  align-self: center;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 0.75rem 1.75rem;
+  border-radius: 999px;
+  border: 2px solid black;
+  color: black;
+
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.25s ease;
 }
 
-.person-name{
-  font-family: 'monument extended regular', Arial;
+
+/* Knop onderaan */
+.plan-btn-white {
+  margin-top: auto;
+  align-self: center;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 0.75rem 1.75rem;
+  border-radius: 999px;
+  border: 2px solid #F3F3E9;
+  color: #F3F3E9;
+
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.25s ease;
 }
-.person-role{
-  font-family: 'Helvetica Neue thin', Arial;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+
+/* SVG icon */
+.plan-btn img,
+.plan-btn-white img {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.25s ease;
 }
-.person-contact{
-  font-family: 'Helvetica Neue thin', Arial;
-  font-size: clamp(1rem, 2vw, 1.2rem)
+
+/* Hover: kaart schuift + arrow draait */
+.plan-btn:hover img,
+.plan-btn-white:hover img {
+  transform: rotate(45deg);
+}
+
+/* Bestaande hover blijft */
+.plan-btn:hover,
+.plan-btn-white:hover {
+  transform: translateX(4px);
+}
+
+.package-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.package-title h4 {
+  margin: 0;
+}
+
+.title-icon {
+  width: 22px;
+  height: auto;
 }

@@ -1,46 +1,58 @@
-  <!-- Full width header image -->
-<div class="w-100 hero-image" style="overflow: hidden;">
-    <img src="./images/BlanckMediaHeader.png" alt="Header" class="w-100 h-100" style="object-fit: cover; object-position: center bottom;">
+<div class="header-image">
+    <img src="./images/BlanckMediaHeader.png" alt="Header">
 </div>
 
-<section class="position-relative">
-  <!-- Arrow down centered -->
-  <div class="text-center mt-4">
-    <img src="./svg/arrow-down.svg" alt="Scroll down" style="width: 25px; height: 25px;">
+
+<section class="position-relative" id="latest-work">
+
+<div class="text-center mt-5">
+  <img src="./svg/arrow-down.svg" alt="Scroll down" class="scroll-arrow">
+</div>
+
+  
+  <div class="container text-center mt-9 mb-10">
+    <p>We are a video production company <br> specialized in premium lifestyle.</p>
   </div>
   
-  <!-- Thin text -->
-  <div class="container text-center space">
-    <p class="thin-font-helvetica">We are a video production company <br> specialized in premium lifestyle.</p>
-  </div>
-  
-  <!-- Latest Work section -->
   <div class="container text-center mt-5">
-    <h2 class="TitleMain mb-4">LATEST WORK</h2>
+    <h2 class="mb-4">LATEST WORK</h2>
     
-   <!-- 3 images side by side -->
 <div class="row g-3 mb-5">
       <div class="col-4">
-        <img src="./images/work-1.png" alt="Work 1" class="w-100 work-image" style="height: auto; object-fit: cover;">
+        <img src="./images/work-1.png" alt="Work 1" class="w-100 rounded-4" style="height: auto; object-fit: cover;">
       </div>
       <div class="col-4">
-        <img src="./images/work-2.png" alt="Work 2" class="w-100 work-image" style="height: auto; object-fit: cover;">
+        <img src="./images/work-2.png" alt="Work 2" class="w-100 rounded-4" style="height: auto; object-fit: cover;">
       </div>
       <div class="col-4">
-        <img src="./images/work-3.png" alt="Work 3" class="w-100 work-image" style="height: auto; object-fit: cover;">
+        <img src="./images/work-3.png" alt="Work 3" class="w-100 rounded-4" style="height: auto; object-fit: cover;">
       </div>
     </div>
     
-    <div class="space-2">
-      <p class="thin-font-helvetica-bottom mb-2">We create high-quality visual content for every platform</p>
-      <p class="small-monument mb-4">Commercials // Social media // Brand stories</p>
+    <div class="mb-9 mt-10">
+      <p class="mb-1">We create high-quality visual content for every platform</p>
+      <b class="mb-4">Commercials // Social media // Brand stories</b>
     </div>
 
-    
-    
-<!-- Plan meeting button -->
-    <a href="https://calendly.com/blanckmedia" class="btn-custom mb-10">
+    <a href="https://calendly.com/blanckmedia"
+     class="btn-primary mb-0"
+     target="_blank"
+     rel="noopener noreferrer">
       Plan Meeting
     </a>
   </div>
 </section>
+
+
+<script>
+  // Selecteer het pijltje
+  const arrow = document.querySelector('.scroll-arrow');
+
+  arrow.addEventListener('click', () => {
+    // Scroll naar de section met id="latest-work"
+    const target = document.querySelector('#latest-work');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+</script>

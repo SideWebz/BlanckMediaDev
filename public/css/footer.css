@@ -1,249 +1,134 @@
-.line{
-    border-top: solid 3px #ffffff;
-    padding-top: 40px;
-}
-.menu {
-  width: max-content;
-  font-family: Arial, sans-serif;
-  color: white;
+body {
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
 }
 
-.menu-title {
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-}
-
-.menu-item {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  margin: 6px 0;
-}
-
-.arrow-icon {
-  width: 14px;
-  height: 14px;
-  margin-left: 10px;
-}
-
-/* MIDDEN KOLOM */
-.footer-logo {
-  max-width: 30vw;
-}
-
-.lang-wrapper {
+/* Desktop & Tablet: afbeelding bepaalt footer grootte */
+footer {
+  position: relative;
+  width: 100%;
   display: flex;
-  justify-content: center;
-  gap: 12px;
+  align-items: flex-end;
+  overflow: hidden;
 }
 
-.lang-btn {
-  width: 70px;
-  height: 25px;
-  border: 1px solid #fff;
-  color: #fff;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.lang-btn:hover {
-  background: #fff;
-  color: #000;
-  cursor: pointer;
-}
-
-/* RECHTER KOLOM */
-.footer-title {
-  color: #fff;
-  font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-}
-
-.footer-contact a {
+footer::before {
+  content: '';
   display: block;
-  margin: 0;
-  padding: 1px 0;
-  line-height: 1.1;
+  padding-top: 45%;
 }
 
-.footer-link {
-  color: #fff;
-  text-decoration: underline;
-  font-size: 0.7rem;
-  display: block;
-  margin: 0;
-  padding: 2px 0;
-  line-height: 1.1;
+footer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/footer-image-blanckmedia.jpg');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
 }
 
-.footer-link:hover {
-  opacity: 0.7;
+/* Grote schermen: crop onderkant */
+@media (min-width: 1600px) {
+  footer::after {
+    background-size: cover;
+    background-position: top center;
+  }
 }
 
-.footer-social a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 12px;
-}
-
-.social-icon {
-  width: 18px;
-  height: 18px;
-  transition: 0.2s ease;
-}
-
-.footer-social a:hover .social-icon {
-  opacity: 0.6;
-}
-
-.footer-bottom {
-  text-align: center;
-  color: #bebebe;
-  font-size: 0.8rem;
-  margin-top: 20px;
-}
-
-.footer-bottom p {
-  margin: 0;
-  line-height: 1.1;
-}
-
-/* MOBILE RESPONSIVE */
-@media (max-width: 767px) {
-  .footer-logo {
-    max-width: 50vw; /* groter op mobile */
-    margin-bottom: 30px;
-  }
-
-  /* Linkse kolom blijft links */
-  .col-md-4:first-child {
-    text-align: left !important;
-  }
-
-  /* Rechtse kolom blijft rechts */
-  .right-footer {
-    text-align: right !important;
-  }
-
-  .menu-title,
-  .footer-title {
-    font-size: 1rem;
-  }
-
-  .menu-item span,
-  .footer-link {
-    font-size: 0.85rem;
-  }
-
-  .arrow-icon {
-    width: 12px;
-    height: 12px;
-  }
-
-  .social-icon {
-    width: 16px;
-    height: 16px;
-  }
-
-  .lang-wrapper {
-    margin-top: 20px;
-  }
+footer .container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
 }
 
 .menu-item {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  margin: 6px 0;
-  color: white;
+  color: #fff;
   text-decoration: none;
-  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.375rem 0;
+  transition: opacity 0.2s;
 }
 
 .menu-item:hover {
   opacity: 0.7;
-  color: white;
+  color: #fff;
+}
+
+.arrow-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 30px;
+}
+
+/* Zorg dat de arrow-icon soepel kan draaien */
+.menu-item .arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+/* Wanneer je over de menu-item hover */
+.menu-item:hover .arrow-icon {
+  transform: rotate(45deg);
+}
+
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  font-family: "Brand-Light", system-ui, sans-serif;
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+}
+
+.footer-link:hover {
+  opacity: 0.7;
+  color: #fff;
+}
+
+.social-icon {
+  width: clamp(20px, 2vw, 28px);
+  height: clamp(20px, 2vw, 28px);
+  transition: opacity 0.2s;
+}
+
+s{
+  text-decoration: none;
+  font-family: "Syne", system-ui, sans-serif;
+}
+
+.social-icon:hover {
+  opacity: 0.6;
+}
+
+.footer-logo {
+  max-width: 600px;
+  width: 100%;
+}
+
+
+nav {
+  width: fit-content;
 }
 
 
 
-@font-face {
-    font-family: 'MyFont';
-    src: url('/fonts/HelveticaNeueRoman.otf') format('opentype');
-}
-
-@font-face {
-    font-family: 'MyFontBold';
-    src: url('/fonts/MonumentExtended-Ultrabold.otf') format('opentype');
-}
-
-@font-face {
-    font-family: 'MyFontRegular';
-    src: url('/fonts/MonumentExtended-Regular.otf') format('opentype');
-}
-
-@font-face {
-    font-family: 'MyFontLight';
-    src: url('/fonts/HelveticaNeueLight.otf') format('opentype');
-}
-
-@font-face {
-    font-family: 'MyFontUltraLight';
-    src: url('/fonts/HelveticaNeueUltraLight.otf') format('opentype');
-}
-
-body {
-  font-family: 'MyFont', sans-serif;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #000000;
-}
-
-.bold {
-    font-family: 'MyFontBold', sans-serif;
-}
-
-.light {
-    font-family: 'MyFontLight', sans-serif;
-}
-
-.ultralight {
-    font-family: 'MyFontUltraLight', sans-serif;
-}
-
-.monregular{
-    font-family: 'MyFontRegular', sans-serif;
-}
-
-main {
-  flex: 1;
-}
-
-
-
-
-/* ----------------------------- */
-/* FONT LETTER SPACING           */
-/* ----------------------------- */
-
-/* Monregular - normaal blijven */
-.monregular {
-  letter-spacing: 1.5px;
-}
-
-/* Light - iets meer spacing */
-.light {
-  letter-spacing: 0.5px;
-}
-
-/* Ultralight - nog meer spacing */
-.ultralight {
-  letter-spacing: 1px;
+/* Mobile: volledige hoogte, breedte mag croppen */
+@media (max-width: 767px) {
+  footer {
+    background-size: auto 100%;
+    background-position: bottom center;
+    min-height: 600px;
+  }
+  
+  .footer-logo {
+    max-width: 350px;
+    margin-bottom: 1.5rem;
+  }
 }

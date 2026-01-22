@@ -18,13 +18,15 @@
 .nav-link {
   position: relative;
   color: #F3F3E9;       /* wit */
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   padding-bottom: 6px;
   transition: color 0.2s ease;
+  font-family: "Brand-Light", system-ui, sans-serif;
 }
 
 /* Underline on hover & active desktop */
 .nav-link::after {
+  color: #c6c6c6 !important;
   content: "";
   position: absolute;
   left: 0;
@@ -46,6 +48,12 @@
   transform: scaleX(1);
 }
 
+/* Desktop: nav-link hover */
+.navbar-nav .nav-link:hover {
+  color: #c6c6c6; /* lichtgrijs bij hover */
+}
+
+
 /* Spacing desktop */
 .navbar-nav .nav-item {
   margin-left: 20px;
@@ -64,6 +72,29 @@
 /* MOBILE / TABLET NAVBAR & MENU */
 /* ----------------------------- */
 @media (max-width: 991px) {
+
+/* Zorg dat het icon soepel kan draaien */
+.menu-items .nav-link .menu-icon {
+  transition: transform 0.3s ease;
+  display: inline-block; /* al aanwezig */
+}
+
+/* Hover: draai 45° naar rechts */
+.menu-items .nav-link:hover .menu-icon {
+  transform: rotate(45deg);
+}
+
+/* Active / clicked: draai ook 45° */
+.menu-items .nav-link.active .menu-icon,
+.menu-items .nav-link.show .menu-icon {
+  transform: rotate(45deg);
+}
+
+
+
+  .navbar-nav .nav-link:hover {
+  color: #000000; /* lichtgrijs bij hover */
+}
 
   /* Hamburger button */
   .navbar-toggler {
