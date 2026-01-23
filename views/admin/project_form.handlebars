@@ -16,7 +16,23 @@
       </div>
       <div class="mb-3">
         <label for="brand" class="form-label">Brand</label>
-        <input id="brand" name="brand" class="form-control" required placeholder="e.g., Nike, Dior, Apple...">
+        <div class="input-group">
+          <input 
+            id="brand" 
+            name="brand" 
+            class="form-control" 
+            required 
+            placeholder="Type to search or enter new brand..."
+            list="brands-list"
+            autocomplete="off"
+          >
+          <datalist id="brands-list">
+            {{#each brands}}
+              <option value="{{this}}">
+            {{/each}}
+          </datalist>
+        </div>
+        <small class="form-text text-muted">Select from existing or type a new brand name</small>
       </div>
       <div class="mb-3">
         <label for="coverImageFile" class="form-label">Cover Image (upload)</label>
@@ -36,6 +52,7 @@
           <option value="WebVideos">WebVideos (3-6 horizontal video links)</option>
           <option value="Results">Results (image + text)</option>
           <option value="Collage">Collage (6-10 images)</option>
+          <option value="TextSection">Text Section (text only)</option>
         </select>
         <button type="button" class="btn btn-secondary" onclick="addSection()">Add Section</button>
       </div>

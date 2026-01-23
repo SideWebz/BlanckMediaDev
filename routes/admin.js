@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { getAllUsers, addUser, deleteUser, findUserByUsername } = require('../utils/userManager');
+const { getAllUsers, addUser, deleteUser, findUserByUsername, isUserAdmin, getUserById } = require('../utils/userManager');
 const bcrypt = require('bcryptjs');
-const { getAllProjects, getProjectById, addProject, updateProject, deleteProject, getProjectsByBrand } = require('../utils/projectManager');
+const { getAllProjects, getProjectById, addProject, updateProject, deleteProject, getProjectsByBrand, getAllBrands, moveProjectUp, moveProjectDown } = require('../utils/projectManager');
+const { getAllSlots, updateSlot, isValidVideoUrl } = require('../utils/homePageManager');
 // multer will be required at runtime if installed
 let multer;
 try { multer = require('multer'); } catch (e) { multer = null; }
@@ -33,6 +34,20 @@ const isAuthenticated = (req, res, next) => {
     return next();
   }
   res.redirect('/admin/login');
+};
+
+// Middleware to check if user is admin
+const isAdmin = (req, res, next) => {
+  if (!req.session.userId) {
+    return res.redirect('/admin/login');
+  }
+  
+  if (isUserAdmin(req.session.userId)) {
+    return next();
+  }
+  
+  // Non-admin user trying to access admin-only resource
+  res.status(403).render('error', { layout: 'admin', message: 'Access Denied: Admin privileges required' });
 };
 
 // Login page - GET
@@ -69,14 +84,16 @@ router.post('/login', (req, res) => {
 
 // Dashboard - protected route
 router.get('/dashboard', isAuthenticated, (req, res) => {
+  const userIsAdmin = isUserAdmin(req.session.userId);
   res.render('admin/dashboard', { 
     layout: 'admin',
-    username: req.session.username 
+    username: req.session.username,
+    isAdmin: userIsAdmin
   });
 });
 
 // Users Management - GET
-router.get('/users', isAuthenticated, (req, res) => {
+router.get('/users', isAdmin, (req, res) => {
   const users = getAllUsers();
   res.render('admin/users', {
     layout: 'admin',
@@ -86,8 +103,8 @@ router.get('/users', isAuthenticated, (req, res) => {
 });
 
 // Add User - POST
-router.post('/users/add', isAuthenticated, (req, res) => {
-  const { username, firstName, lastName, password } = req.body;
+router.post('/users/add', isAdmin, (req, res) => {
+  const { username, firstName, lastName, password, isAdmin: adminFlag } = req.body;
 
   if (!username || !firstName || !lastName || !password) {
     return res.status(400).json({ error: 'All fields are required' });
@@ -99,7 +116,7 @@ router.post('/users/add', isAuthenticated, (req, res) => {
     return res.status(400).json({ error: 'Username already exists' });
   }
 
-  addUser(username, firstName, lastName, password, (err, user) => {
+  addUser(username, firstName, lastName, password, adminFlag === 'true' || adminFlag === true, (err, user) => {
     if (err) {
       return res.status(500).json({ error: 'Error creating user' });
     }
@@ -108,7 +125,7 @@ router.post('/users/add', isAuthenticated, (req, res) => {
 });
 
 // Delete User - POST
-router.post('/users/delete/:id', isAuthenticated, (req, res) => {
+router.post('/users/delete/:id', isAdmin, (req, res) => {
   const userId = req.params.id;
   deleteUser(userId);
   res.json({ success: true });
@@ -126,10 +143,12 @@ router.get('/projects', isAuthenticated, (req, res) => {
 
 // Projects - new form
 router.get('/projects/new', isAuthenticated, (req, res) => {
+  const brands = getAllBrands();
   res.render('admin/project_form', {
     layout: 'admin',
     username: req.session.username,
-    project: null
+    project: null,
+    brands
   });
 });
 
@@ -152,6 +171,20 @@ router.post('/projects/delete/:id', isAuthenticated, (req, res) => {
   const id = req.params.id;
   deleteProject(id);
   res.json({ success: true });
+});
+
+// Projects - move up
+router.post('/projects/move-up/:id', isAuthenticated, (req, res) => {
+  const id = req.params.id;
+  const project = moveProjectUp(id);
+  res.json({ success: true, project });
+});
+
+// Projects - move down
+router.post('/projects/move-down/:id', isAuthenticated, (req, res) => {
+  const id = req.params.id;
+  const project = moveProjectDown(id);
+  res.json({ success: true, project });
 });
 
 // Upload base64 file (simple, no external deps)
@@ -194,6 +227,53 @@ router.get('/logout', (req, res) => {
     if (err) return res.send('Error logging out');
     res.redirect('/');
   });
+});
+
+// Home Page Management - GET
+router.get('/home', isAuthenticated, (req, res) => {
+  const slots = getAllSlots();
+  res.render('admin/home', {
+    layout: 'admin',
+    username: req.session.username,
+    slots: slots
+  });
+});
+
+// Home Page Slot Update - POST
+router.post('/home/slot/:id', isAuthenticated, (req, res) => {
+  const slotId = req.params.id;
+  const { type, image_path, video_url } = req.body;
+
+  // Validate input
+  if (!type || (type !== 'image' && type !== 'video')) {
+    return res.status(400).json({ error: 'Invalid type. Must be "image" or "video"' });
+  }
+
+  if (type === 'image' && !image_path) {
+    return res.status(400).json({ error: 'Image path is required for image type' });
+  }
+
+  if (type === 'video') {
+    if (!video_url) {
+      return res.status(400).json({ error: 'Video URL is required for video type' });
+    }
+    if (!isValidVideoUrl(video_url)) {
+      return res.status(400).json({ error: 'Invalid video URL. Must be a valid video file (.mp4, .webm, .mov)' });
+    }
+  }
+
+  const updates = {
+    type: type,
+    image_path: type === 'image' ? image_path : null,
+    video_url: type === 'video' ? video_url : null
+  };
+
+  const slot = updateSlot(slotId, updates);
+  if (!slot) {
+    return res.status(404).json({ error: 'Slot not found' });
+  }
+
+  res.json({ success: true, slot });
 });
 
 module.exports = router;

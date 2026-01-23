@@ -112,6 +112,18 @@
   display: none;
 }
 
+/* Video poster/thumbnail styling */
+video {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.proj-video-text-wrapper video,
+.proj-reels .reel video {
+  background-color: #000;
+}
+
 /* HeaderImageText Section */
 .proj-header-text {
   display: flex;

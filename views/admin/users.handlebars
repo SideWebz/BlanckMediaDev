@@ -13,6 +13,7 @@
             <th>Username</th>
             <th>Voornaam</th>
             <th>Naam</th>
+            <th>Role</th>
             <th>Created</th>
             <th>Actions</th>
           </tr>
@@ -23,6 +24,11 @@
             <td><strong>{{this.username}}</strong></td>
             <td>{{this.firstName}}</td>
             <td>{{this.lastName}}</td>
+            <td>
+              <span class="badge {{#if (eq this.role 'admin')}}bg-danger{{else}}bg-secondary{{/if}}">
+                {{#if (eq this.role 'admin')}}Admin{{else}}User{{/if}}
+              </span>
+            </td>
             <td>{{formatDate this.createdAt}}</td>
             <td>
               <button class="btn btn-sm btn-danger" onclick="deleteUser({{this.id}})">Delete</button>
@@ -62,6 +68,12 @@
                 <label for="password" class="form-label">Wachtwoord</label>
                 <input type="password" id="password" name="password" class="form-control" required>
               </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" id="isAdmin" name="isAdmin" class="form-check-input">
+                <label for="isAdmin" class="form-check-label">
+                  Make this user an Admin
+                </label>
+              </div>
               <div class="d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary">Add User</button>
                 <button type="button" class="btn btn-outline-secondary ms-2" data-bs-dismiss="modal">Cancel</button>
@@ -91,12 +103,13 @@ document.getElementById('addUserForm').addEventListener('submit', async (e) => {
   const firstName = document.getElementById('firstName').value;
   const lastName = document.getElementById('lastName').value;
   const password = document.getElementById('password').value;
+  const isAdmin = document.getElementById('isAdmin').checked;
 
   try {
     const response = await fetch('/admin/users/add', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, firstName, lastName, password })
+      body: JSON.stringify({ username, firstName, lastName, password, isAdmin })
     });
 
     const data = await response.json();

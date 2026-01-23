@@ -172,28 +172,9 @@ function initAnimation() {
     scrollTriggerInstance = tl.scrollTrigger;
     
     tl.to(cards[1], { x: 0, opacity: 1, duration: 1 }, 0)
-      .to(cards[2], { x: 0, opacity: 1, duration: 1 }, 0.2);
+      .to(cards[2], { x: 0, opacity: 1, duration: 1 }, 0);
     
-  } else if (isMobile) {
-    // Mobile: kaarten starten op positie van kaart 1 (bovenste)
-    gsap.set(cards[0], { y: 0, opacity: 1 }); // bovenste, al zichtbaar
-    gsap.set(cards[1], { y: -150, opacity: 1 }); // start boven
-    gsap.set(cards[2], { y: -300, opacity: 1 }); // start ver boven
-    
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.overlapping-cards',
-        start: 'top 40%',
-        end: 'top 30%',
-        scrub: 1.2,
-      }
-    });
-    
-    scrollTriggerInstance = tl.scrollTrigger;
-    
-    tl.to(cards[1], { y: 0, opacity: 1, duration: 1 }, 0)
-      .to(cards[2], { y: 0, opacity: 1, duration: 1 }, 0.2);
-  }
+  } 
   // Tablet heeft geen animatie
 }
 

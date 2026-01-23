@@ -25,7 +25,7 @@ const getAllUsers = () => {
 };
 
 // Add a new user
-const addUser = (username, firstName, lastName, password, callback) => {
+const addUser = (username, firstName, lastName, password, isAdmin = false, callback) => {
   bcrypt.hash(password, 10, (err, hashedPassword) => {
     if (err) return callback(err);
 
@@ -36,6 +36,7 @@ const addUser = (username, firstName, lastName, password, callback) => {
       firstName,
       lastName,
       password: hashedPassword,
+      role: isAdmin ? 'admin' : 'user',
       createdAt: new Date().toISOString()
     };
 
@@ -59,9 +60,24 @@ const deleteUser = (id) => {
   return filtered;
 };
 
+// Check if user is admin
+const isUserAdmin = (userId) => {
+  const users = readUsers();
+  const user = users.find(u => u.id === parseInt(userId));
+  return user && user.role === 'admin';
+};
+
+// Get user by ID
+const getUserById = (userId) => {
+  const users = readUsers();
+  return users.find(u => u.id === parseInt(userId));
+};
+
 module.exports = {
   getAllUsers,
   addUser,
   deleteUser,
-  findUserByUsername
+  findUserByUsername,
+  isUserAdmin,
+  getUserById
 };

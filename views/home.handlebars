@@ -17,7 +17,35 @@
   <div class="container text-center mt-5">
     <h2 class="mb-4">LATEST WORK</h2>
     
-<div class="row g-3 mb-5">
+    {{#if homeSlots}}
+    <div class="row g-3 mb-5">
+      {{#each homeSlots}}
+      <div class="col-4">
+        {{#if (eq this.type 'image')}}
+          {{#if this.image_path}}
+            <img src="{{this.image_path}}" alt="Media Slot {{this.id}}" class="w-100 rounded-4" style="height: auto; object-fit: cover;">
+          {{else}}
+            <div class="w-100 rounded-4 bg-secondary" style="height: 300px; display: flex; align-items: center; justify-content: center;">
+              <span class="text-muted">No image</span>
+            </div>
+          {{/if}}
+        {{else if (eq this.type 'video')}}
+          {{#if this.video_url}}
+            <video autoplay muted loop playsinline class="w-100 rounded-4" style="height: auto; object-fit: cover;">
+              <source src="{{this.video_url}}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          {{else}}
+            <div class="w-100 rounded-4 bg-secondary" style="height: 300px; display: flex; align-items: center; justify-content: center;">
+              <span class="text-muted">No video</span>
+            </div>
+          {{/if}}
+        {{/if}}
+      </div>
+      {{/each}}
+    </div>
+    {{else}}
+    <div class="row g-3 mb-5">
       <div class="col-4">
         <img src="./images/work-1.png" alt="Work 1" class="w-100 rounded-4" style="height: auto; object-fit: cover;">
       </div>
@@ -28,6 +56,7 @@
         <img src="./images/work-3.png" alt="Work 3" class="w-100 rounded-4" style="height: auto; object-fit: cover;">
       </div>
     </div>
+    {{/if}}
     
     <div class="mb-9 mt-10">
       <p class="mb-1">We create high-quality visual content for every platform</p>

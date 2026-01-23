@@ -23,13 +23,13 @@ function addSection() {
 
   switch(type) {
     case 'VideoText':
-      section.data = { video: '', text: '' };
+      section.data = { video: '', text: '', thumbnail: '' };
       break;
     case 'CollageHeader':
       section.data = { images: [], text: '' };
       break;
     case 'Reels':
-      section.data = { videos: ['', '', '', ''] };
+      section.data = { videos: ['', '', '', ''], thumbnails: ['', '', '', ''] };
       break;
     case 'WebVideos':
       section.data = { videos: ['', '', '', '', '', ''] };
@@ -39,6 +39,9 @@ function addSection() {
       break;
     case 'Collage':
       section.data = { images: [] };
+      break;
+    case 'TextSection':
+      section.data = { text: '' };
       break;
   }
 
@@ -57,6 +60,8 @@ function renderSections() {
 
     if (s.type === 'VideoText') {
       inner += `<div class="mb-3"><label class="form-label">Video URL</label><input type="text" class="form-control" placeholder="YouTube, Vimeo, etc." value="${escapeHTML(s.data.video || '')}" onchange="updateSectionField(${s.id}, 'video', this.value)"></div>`;
+      inner += `<div class="mb-3"><label class="form-label">Video Thumbnail / Poster Image (optional)</label><input type="file" accept="image/*" class="form-control" onchange="uploadSectionFile(${s.id}, this.files[0], 'thumbnail')"></div>`;
+      inner += `${s.data.thumbnail ? `<p class="alert alert-success py-2 mb-3">✓ Thumbnail uploaded</p>` : ''}`;
       inner += `<div class="mb-3"><label class="form-label">Text</label><textarea class="form-control" rows="4" onchange="updateSectionField(${s.id}, 'text', this.value)">${escapeHTML(s.data.text || '')}</textarea></div>`;
     }
 
@@ -70,6 +75,15 @@ function renderSections() {
       inner += `<div class="mb-3"><label class="form-label">Video Links (3-4 vertical video links, e.g., TikTok, Instagram Reels)</label>`;
       for (let i = 0; i < 4; i++) {
         inner += `<input type="text" class="form-control mb-2" placeholder="Video ${i+1} URL" value="${escapeHTML(s.data.videos[i] || '')}" onchange="updateVideoField(${s.id}, ${i}, this.value)">`;
+      }
+      inner += `</div>`;
+      inner += `<div class="mb-3"><label class="form-label">Video Thumbnails / Poster Images (optional)</label><p class="text-muted mb-2">Upload thumbnail images for each video</p>`;
+      for (let i = 0; i < 4; i++) {
+        inner += `<div class="mb-2">`;
+        inner += `<label class="form-label mb-1">Thumbnail ${i+1}</label>`;
+        inner += `<input type="file" accept="image/*" class="form-control" onchange="uploadReelThumbnail(${s.id}, ${i}, this.files[0])">`;
+        inner += `${s.data.thumbnails && s.data.thumbnails[i] ? `<p class="alert alert-success py-1 mt-1 mb-0">✓ Uploaded</p>` : ''}`;
+        inner += `</div>`;
       }
       inner += `</div>`;
     }
@@ -91,6 +105,10 @@ function renderSections() {
     if (s.type === 'Collage') {
       inner += `<div class="mb-3"><label class="form-label">Images (6-10 images, upload)</label><input type="file" accept="image/*" multiple class="form-control" onchange="uploadMultipleSectionFiles(${s.id}, this.files)"></div>`;
       inner += `${s.data.images.length > 0 ? `<p class="alert alert-success py-2">✓ ${s.data.images.length} images uploaded</p>` : ''}`;
+    }
+
+    if (s.type === 'TextSection') {
+      inner += `<div class="mb-3"><label class="form-label">Text Content</label><textarea class="form-control" rows="6" onchange="updateSectionField(${s.id}, 'text', this.value)">${escapeHTML(s.data.text || '')}</textarea></div>`;
     }
 
     inner += `<div class="mt-3 d-flex gap-2"><button type="button" class="btn btn-sm btn-outline-light" onclick="moveUp(${s.id})">↑ Move Up</button><button type="button" class="btn btn-sm btn-outline-light" onclick="moveDown(${s.id})">↓ Move Down</button></div></div>`;
@@ -199,6 +217,17 @@ function uploadMultipleSectionFiles(sectionId, files) {
     s.data.images = urls;
     renderSections();
   }).catch(() => alert('One or more uploads failed'));
+}
+
+function uploadReelThumbnail(sectionId, index, file) {
+  if (!file) return;
+  uploadFileToServer(file).then(url => {
+    const s = sections.find(x => x.id === sectionId);
+    if (!s) return;
+    if (!Array.isArray(s.data.thumbnails)) s.data.thumbnails = [];
+    s.data.thumbnails[index] = url;
+    renderSections();
+  }).catch(err => alert('Thumbnail upload failed'));
 }
 
 // Submit handler

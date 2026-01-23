@@ -62,10 +62,11 @@ app.engine('handlebars', engine({
        case 'VideoText':
   let videoUrl = data.video || '';
   let videoHtml = '';
+  const posterAttr = data.thumbnail ? `poster="${h.escapeExpression(data.thumbnail)}"` : '';
   
   // Check if it's a direct video file (mp4, webm, etc.)
   if (videoUrl.includes('.mp4') || videoUrl.includes('.webm') || videoUrl.includes('.mov')) {
-    videoHtml = `<video width="100%" playsinline preload="metadata" id="videoframe"><source src="${h.escapeExpression(videoUrl)}" type="video/mp4"></video>`;
+    videoHtml = `<video width="100%" playsinline preload="metadata" id="videoframe" ${posterAttr}><source src="${h.escapeExpression(videoUrl)}" type="video/mp4"></video>`;
   } else {
     // It's an embed URL (iframe)
     videoHtml = `<iframe id="videoframe" src="${h.escapeExpression(videoUrl)}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="width: 100%; height: 100%;"></iframe>`;
@@ -111,17 +112,22 @@ app.engine('handlebars', engine({
 
 case 'Reels':
   const reels = (data.videos || []).filter(v=>v);
-  const reelsHtml = reels.map((u, idx) => `
+  const thumbnails = data.thumbnails || [];
+  const reelsHtml = reels.map((u, idx) => {
+    const posterAttr = thumbnails[idx] ? `poster="${h.escapeExpression(thumbnails[idx])}"` : '';
+    return `
     <div class="reel" id="reel-${idx}">
       <video 
         id="video-${idx}"
         src="${h.escapeExpression(u)}" 
         playsinline
         preload="metadata"
+        ${posterAttr}
       ></video>
       <div class="reel-play-button" onclick="playReel(${idx})"></div>
     </div>
-  `).join('');
+  `;
+  }).join('');
   
   return new h.SafeString(`
     <section class="proj-reels">
@@ -177,6 +183,9 @@ case 'WebVideos':
           
           const collageGridHtml = collageImgs.map((u, idx) => `<div class="collage-item collage-item-${idx + 1}"><img src="${h.escapeExpression(u)}" alt=""/></div>`).join('');
           return new h.SafeString(`<section class="proj-collage"><div class="${collageGridClass}">${collageGridHtml}</div></section>`);
+
+        case 'TextSection':
+          return new h.SafeString(`<section class="proj-text-section"><div class="text-section-content"><p class="section-text">${h.escapeExpression(data.text || '')}</p></div></section>`);
 
         default:
           return '';

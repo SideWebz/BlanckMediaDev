@@ -53,11 +53,48 @@ const getProjectsByBrand = (brand) => {
   return projects.filter(p => p.brand && p.brand.toLowerCase() === brand.toLowerCase());
 };
 
+const getAllBrands = () => {
+  const projects = readProjects();
+  const brands = new Set();
+  projects.forEach(p => {
+    if (p.brand) brands.add(p.brand);
+  });
+  return Array.from(brands).sort();
+};
+
 const deleteProject = (id) => {
   const projects = readProjects();
   const filtered = projects.filter(p => String(p.id) !== String(id));
   writeProjects(filtered);
   return filtered;
+};
+
+const moveProjectUp = (id) => {
+  const projects = readProjects();
+  const idx = projects.findIndex(p => String(p.id) === String(id));
+  if (idx <= 0) return projects[idx] || null;
+  
+  // Swap with previous
+  const tmp = projects[idx - 1];
+  projects[idx - 1] = projects[idx];
+  projects[idx] = tmp;
+  
+  writeProjects(projects);
+  return projects[idx - 1];
+};
+
+const moveProjectDown = (id) => {
+  const projects = readProjects();
+  const idx = projects.findIndex(p => String(p.id) === String(id));
+  if (idx >= projects.length - 1 || idx === -1) return projects[idx] || null;
+  
+  // Swap with next
+  const tmp = projects[idx + 1];
+  projects[idx + 1] = projects[idx];
+  projects[idx] = tmp;
+  
+  writeProjects(projects);
+  return projects[idx + 1];
 };
 
 module.exports = {
@@ -66,5 +103,8 @@ module.exports = {
   addProject,
   updateProject,
   deleteProject,
-  getProjectsByBrand
+  getProjectsByBrand,
+  getAllBrands,
+  moveProjectUp,
+  moveProjectDown
 };

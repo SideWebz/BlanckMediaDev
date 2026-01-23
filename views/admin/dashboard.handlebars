@@ -5,12 +5,22 @@
       <div class="col-md-4">
         <div class="card">
           <div class="card-body">
+            <h5 class="card-title">Home Page</h5>
+            <p class="card-text">Configure media slots on home page</p>
+            <a href="/admin/home" class="btn btn-primary">Manage</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
             <h5 class="card-title">Projects</h5>
             <p class="card-text">Manage your projects and portfolios</p>
             <a href="/admin/projects" class="btn btn-primary">Manage</a>
           </div>
         </div>
       </div>
+      {{#if isAdmin}}
       <div class="col-md-4">
         <div class="card">
           <div class="card-body">
@@ -20,15 +30,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Analytics</h5>
-            <p class="card-text">View website analytics and statistics</p>
-            <a href="#" class="btn btn-primary">View</a>
-          </div>
-        </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 </section>

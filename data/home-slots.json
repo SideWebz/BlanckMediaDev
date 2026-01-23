@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "type": "image",
+    "image_path": "/uploads/1769170831566-ysye40.jpg",
+    "video_url": null
+  },
+  {
+    "id": 2,
+    "type": "image",
+    "image_path": "/uploads/1769170854228-cexn7h.jpg",
+    "video_url": null
+  },
+  {
+    "id": 3,
+    "type": "image",
+    "image_path": "/uploads/1769170863020-6i5tdq.jpg",
+    "video_url": null
+  }
+]
