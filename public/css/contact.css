@@ -1,1 +1,54 @@
-/* Contact page styles */
+/* ================= CONTACT PAGE - CARD SECTION ONLY ================= */
+
+/* Note: Header styling is now in /css/headers.css */
+/* This file contains styles for the contact card section below the header */
+
+/* ================= CONTACT CARD ================= */
+.bg-darkGray {
+  background-color: #1a1a1a;
+}
+
+/* ================= TYPO ================= */
+.PP-Mon {
+  font-family: "PP-Monument_Extd_Regular", sans-serif;
+}
+
+.small-title {
+  font-size: clamp(0.95rem, 2.5vw, 1.5rem);
+  text-transform: uppercase;
+  font-family: "PP-Monument_Extd_Regular", sans-serif;
+}
+
+.contact-small,
+.mind,
+.mind-bold {
+  font-family: "Syne", system-ui, sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+}
+
+.mind-bold {
+  font-weight: 700;
+}
+
+/* ================= FORM ================= */
+.form-clean {
+  border: 0;
+  border-bottom: 1px solid #999;
+  border-radius: 0;
+  background: transparent;
+  padding-left: 0;
+}
+
+.form-clean:focus {
+  box-shadow: none;
+  border-color: #000;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 576px) {
+  .form-clean {
+    font-size: 1rem;
+    padding-block: 0.75rem;
+  }
+}
+

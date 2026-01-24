@@ -1,10 +1,12 @@
 <article class="">
   <div class="container">
-    <header class="project-header mb-0">
-      <h1 class="PageTitleLowerCase mb-0">{{project.title}}</h1>
-      {{#if project.brand}}
-        <p class="project-subtitle"><strong>{{project.slug}}</strong></p>
-      {{/if}}
+    <header class="page-header page-header--no-image">
+      <div class="page-header__content">
+        <h1 class="page-header__title">{{project.title}}</h1>
+        {{#if project.brand}}
+          <p class="page-header__subtitle">{{project.slug}}</p>
+        {{/if}}
+      </div>
     </header>
 
     <div class="project-sections mb-5">
