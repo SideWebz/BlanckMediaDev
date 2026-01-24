@@ -9,7 +9,7 @@
 
 :root {
   /* Header Height Variables */
-  --header-height-mobile: 60vh;
+  --header-height-mobile: 40vh;
   --header-height-tablet: 70vh;
   --header-height-desktop: 80vh;
 
@@ -19,7 +19,7 @@
   --header-height-content-desktop: 60vh;
 
   /* Text/padding spacing */
-  --header-padding-mobile: clamp(2rem, 8vw, 4rem);
+  --header-padding-mobile: clamp(1rem, 8vw, 1rem);
   --header-padding-tablet: clamp(3rem, 10vw, 6rem);
   --header-padding-desktop: clamp(4rem, 12vw, 8rem);
 
@@ -353,6 +353,7 @@
   /* Increase spacing for mobile readability */
   .page-header {
     padding-top: max(var(--header-padding-mobile), calc(var(--navbar-height) + 2rem));
+    padding-bottom: 3rem;
   }
 }
 
@@ -362,5 +363,145 @@
     flex-direction: row;
     justify-content: center;
     gap: 1rem;
+  }
+}
+.page-header__actions--grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  justify-items: stretch;
+  width: 100%;
+}
+
+/* Derde button centered op tweede rij */
+.page-header__actions--grid .page-header__tab-button:nth-child(3) {
+  grid-column: 1 / -1;
+  max-width: 300px;
+  justify-self: center;
+}
+
+/* Vanaf tablet: alles op één rij */
+@media (min-width: 768px) {
+  .page-header__actions--grid {
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    width: auto;
+  }
+  
+  .page-header__actions--grid .page-header__tab-button:nth-child(3) {
+    grid-column: auto;
+    max-width: none;
+  }
+}
+
+/* Compact header for contact page */
+.page-header--contact {
+  padding-bottom: clamp(1.5rem, 4vw, 3rem) !important;
+}
+
+/* Mobile: Keep navbar spacing intact */
+@media (max-width: 767px) {
+  .page-header--contact {
+    padding-top: max(var(--header-padding-mobile), calc(var(--navbar-height) + 2rem)) !important;
+  }
+  
+  .page-header__contact-image {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .page-header__contact-name {
+    font-size: 0.9rem;
+    margin-bottom: 0.1rem;
+  }
+  
+  .page-header__contact-role {
+    font-size: 0.75rem !important;
+  }
+  
+  .page-header__contact-info {
+    font-size: 0.75rem !important;
+  }
+  
+  .page-header__contact-info p {
+        font-size: 0.75rem !important;
+    margin: 0.2rem 0;
+    line-height: 1.4;
+  }
+  
+  .page-header__contact-section {
+    gap: 1rem;
+  }
+  
+  .page-header__contact-item {
+    gap: 0.75rem;
+  }
+  
+  .page-header__title {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .page-header--contact {
+  }
+  
+  .page-header__contact-image {
+    width: 65px;
+    height: 65px;
+  }
+  
+  .page-header__contact-info {
+    font-size: 0.9rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+  .page-header--contact {
+    padding-top: clamp(3rem, 6vw, 5rem) !important;
+  }
+}
+
+
+/* Keep icon next to title on mobile */
+@media (max-width: 767px) {
+  .page-header__title--with-icon {
+    flex-wrap: nowrap;
+  }
+  
+  .page-header__title--with-icon::before {
+    width: clamp(25px, 4vw, 35px);
+    height: clamp(25px, 4vw, 35px);
+  }
+}
+
+
+/* Work page header - same size as other pages */
+.page-header--work {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: auto !important;
+}
+
+@media (max-width: 767px) {
+  .page-header--work {
+    padding: var(--header-padding-mobile);
+    padding-top: max(var(--header-padding-mobile), calc(var(--navbar-height) + 2rem)) !important;
+    padding-bottom: var(--header-padding-mobile);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .page-header--work {
+    padding: var(--header-padding-tablet);
+  }
+}
+
+@media (min-width: 1200px) {
+  .page-header--work {
+    padding: var(--header-padding-desktop);
   }
 }
