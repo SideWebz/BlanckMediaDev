@@ -9,9 +9,9 @@
 
 :root {
   /* Header Height Variables */
-  --header-height-mobile: 40vh;
-  --header-height-tablet: 70vh;
-  --header-height-desktop: 80vh;
+  --header-height-mobile: 20vh;
+  --header-height-tablet: 40vh;
+  --header-height-desktop: 60vh;
 
   /* Reduced heights for headers with additional content */
   --header-height-content-mobile: 50vh;
@@ -46,7 +46,7 @@
   .page-header {
     min-height: var(--header-height-mobile);
     padding: var(--header-padding-mobile);
-    padding-top: calc(var(--header-padding-mobile) + 20px); /* Extra space from navbar */
+    padding-top: calc(var(--header-padding-mobile) + 100px); /* Extra space from navbar */
   }
 }
 
@@ -285,7 +285,7 @@
 
 .page-header__contact-info {
   font-family: "Syne", system-ui, sans-serif;
-  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  font-size: clamp(0.9rem, 1.8vw, 1rem) !important;
   color: rgba(255, 255, 255, 0.8);
   text-align: left;
   word-break: break-word;
@@ -300,6 +300,7 @@
 .page-header__contact-info p {
   margin: 0;
   line-height: 1.5;
+    font-size: clamp(0.9rem, 1.8vw, 1rem) !important;
 }
 
 /* ==================================================
@@ -352,7 +353,7 @@
 
   /* Increase spacing for mobile readability */
   .page-header {
-    padding-top: max(var(--header-padding-mobile), calc(var(--navbar-height) + 2rem));
+    padding-top: max(var(--header-padding-mobile), calc(var(--navbar-height) + 5rem));
     padding-bottom: 3rem;
   }
 }
@@ -402,7 +403,7 @@
 /* Mobile: Keep navbar spacing intact */
 @media (max-width: 767px) {
   .page-header--contact {
-    padding-top: max(var(--header-padding-mobile), calc(var(--navbar-height) + 2rem)) !important;
+    padding-top: max(var(--header-padding-mobile), calc(var(--navbar-height) + 5rem)) !important;
   }
   
   .page-header__contact-image {
@@ -457,12 +458,6 @@
   }
 }
 
-/* Desktop */
-@media (min-width: 1200px) {
-  .page-header--contact {
-    padding-top: clamp(3rem, 6vw, 5rem) !important;
-  }
-}
 
 
 /* Keep icon next to title on mobile */
