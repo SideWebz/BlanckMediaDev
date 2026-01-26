@@ -9,8 +9,8 @@
 
 :root {
   /* Header Height Variables */
-  --header-height-mobile: 20vh;
-  --header-height-tablet: 40vh;
+  --header-height-mobile: 25vh;
+  --header-height-tablet: 35vh;
   --header-height-desktop: 60vh;
 
   /* Reduced heights for headers with additional content */
@@ -473,16 +473,45 @@
 }
 
 
-/* Work page header - same size as other pages */
+/* Home page header - taller on desktop */
+.page-header--home {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 767px) {
+  .page-header--home {
+    min-height: 35vh;
+    padding: var(--header-padding-mobile);
+    padding-top: calc(var(--header-padding-mobile) + 100px);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .page-header--home {
+    min-height: 55vh;
+    padding: var(--header-padding-tablet);
+  }
+}
+
+@media (min-width: 1200px) {
+  .page-header--home {
+    min-height: 80vh;
+    padding: var(--header-padding-desktop);
+  }
+}
+
+/* Work page header - medium height */
 .page-header--work {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: auto !important;
 }
 
 @media (max-width: 767px) {
   .page-header--work {
+    min-height: 25vh;
     padding: var(--header-padding-mobile);
     padding-top: max(var(--header-padding-mobile), calc(var(--navbar-height) + 2rem)) !important;
     padding-bottom: var(--header-padding-mobile);
@@ -491,12 +520,14 @@
 
 @media (min-width: 768px) and (max-width: 1199px) {
   .page-header--work {
+    min-height: 40vh;
     padding: var(--header-padding-tablet);
   }
 }
 
 @media (min-width: 1200px) {
   .page-header--work {
+    min-height: 60vh;
     padding: var(--header-padding-desktop);
   }
 }
