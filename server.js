@@ -76,26 +76,58 @@ app.engine('handlebars', engine({
     <section class="proj-video-text">
       <div class="proj-video-text-wrapper">
         ${videoHtml}
-        <div class="video-play-button" onclick="playVideoText()"></div>
+        <div class="video-play-button" onclick="playVideoText(this)"></div>
       </div>
       <p class="section-text">${h.escapeExpression(data.text || '')}</p>
     </section>
     <script>
-      function playVideoText() {
-        const v = document.getElementById('videoframe');
-        const playBtn = document.querySelector('.proj-video-text .video-play-button');
+      function playVideoText(btn) {
+        const wrapper = btn.closest('.proj-video-text-wrapper');
+        const v = wrapper ? wrapper.querySelector('#videoframe') : null;
+        const playBtn = wrapper ? wrapper.querySelector('.video-play-button') : null;
+        
+        if (!playBtn || !v) return;
+        
+        // Hide play button immediately with multiple methods for cross-browser compatibility
+        playBtn.classList.add('hidden');
+        playBtn.style.display = 'none';
+        playBtn.style.visibility = 'hidden';
+        playBtn.style.pointerEvents = 'none';
         
         if (v.tagName === 'VIDEO') {
           // It's a video element
           v.controls = true;
-          v.play();
-        } else {
+          
+          // Add event listener to ensure button stays hidden during playback
+          const ensureHidden = () => {
+            playBtn.classList.add('hidden');
+            playBtn.style.display = 'none';
+            playBtn.style.visibility = 'hidden';
+            playBtn.style.pointerEvents = 'none';
+          };
+          
+          // Listen for play and playing events with cross-browser support
+          v.addEventListener('play', ensureHidden, false);
+          v.addEventListener('playing', ensureHidden, false);
+          v.addEventListener('loadstart', ensureHidden, false);
+          
+          // Attempt to play
+          const playPromise = v.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(error => {
+              console.log('Video play error:', error);
+              // If play fails, re-show the button
+              playBtn.classList.remove('hidden');
+              playBtn.style.display = 'flex';
+              playBtn.style.visibility = 'visible';
+              playBtn.style.pointerEvents = 'auto';
+            });
+          }
+        } else if (v.tagName === 'IFRAME') {
           // It's an iframe - enable pointer events for interaction
           v.style.pointerEvents = 'auto';
+          // Button stays hidden as user can interact directly with iframe
         }
-        
-        // Hide play button
-        playBtn.classList.add('hidden');
       }
     </script>
   `);
@@ -137,14 +169,45 @@ case 'Reels':
     <script>
       function playReel(idx) {
         const video = document.getElementById('video-' + idx);
-        const playBtn = document.getElementById('reel-' + idx).querySelector('.reel-play-button');
+        const reelContainer = document.getElementById('reel-' + idx);
+        const playBtn = reelContainer ? reelContainer.querySelector('.reel-play-button') : null;
         
-        // Show controls and play
-        video.controls = true;
-        video.play();
+        if (!video || !playBtn) return;
         
-        // Hide play button
+        // Hide play button immediately with multiple methods for cross-browser compatibility
         playBtn.classList.add('hidden');
+        playBtn.style.display = 'none';
+        playBtn.style.visibility = 'hidden';
+        playBtn.style.pointerEvents = 'none';
+        
+        // Show controls
+        video.controls = true;
+        
+        // Add event listeners to ensure button stays hidden during playback
+        const ensureHidden = () => {
+          playBtn.classList.add('hidden');
+          playBtn.style.display = 'none';
+          playBtn.style.visibility = 'hidden';
+          playBtn.style.pointerEvents = 'none';
+        };
+        
+        // Listen for play events with cross-browser support
+        video.addEventListener('play', ensureHidden, false);
+        video.addEventListener('playing', ensureHidden, false);
+        video.addEventListener('loadstart', ensureHidden, false);
+        
+        // Attempt to play
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            console.log('Video play error:', error);
+            // If play fails, re-show the button
+            playBtn.classList.remove('hidden');
+            playBtn.style.display = 'flex';
+            playBtn.style.visibility = 'visible';
+            playBtn.style.pointerEvents = 'auto';
+          });
+        }
       }
     </script>
   `);
