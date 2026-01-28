@@ -84,7 +84,7 @@ footer .container {
   text-decoration: none;
   transition: opacity 0.2s;
   font-family: "Brand-Light", system-ui, sans-serif;
-  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  font-size: clamp(0.8rem, 1.5vw, 1.3rem);
 }
 
 .footer-link:hover {
