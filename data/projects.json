@@ -1,2 +1,98 @@
 [
+  {
+    "id": 1769627475346,
+    "title": "TestProject",
+    "slug": "TestProjectAllSections",
+    "brand": "Test",
+    "coverImage": "/uploads/1769627300074-lk2sq6.png",
+    "sections": [
+      {
+        "type": "VideoText",
+        "data": {
+          "video": "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Wintercampaign%202025/Najaarscampagnevideo%20Steel%26Barnett%20Directors%20cut.mp4",
+          "text": "For this project, we created the Autumn Campaign for Steel & Barnett, a men’s jewelry brand with a strong yet refined aesthetic. The focus was on capturing the warmth and depth of the season, translating the brand’s identity into visuals that feel confident, modern, and timeless. A story of craftsmanship and character, told through rich red tones and elegant indoor settings. We also delivered short videos for the website to showcase the jewelry in fluid motion.",
+          "thumbnail": "/uploads/1769627324576-28ehks.jpg"
+        }
+      },
+      {
+        "type": "CollageHeader",
+        "data": {
+          "images": [
+            "/uploads/1769627353461-ponqtq.jpg",
+            "/uploads/1769627353470-2nvdo7.png",
+            "/uploads/1769627353472-j0kd2r.jpg",
+            "/uploads/1769627353474-2pmmm0.jpg",
+            "/uploads/1769627353481-yfhvvs.jpg",
+            "/uploads/1769627353482-jig8vm.jpg",
+            "/uploads/1769627353495-tssdv0.jpg",
+            "/uploads/1769627353508-dqevlj.jpg",
+            "/uploads/1769627353504-71z74o.png",
+            "/uploads/1769627353509-hkscee.jpg"
+          ],
+          "text": "For this project, we created the Autumn Campaign for Steel & Barnett, a men’s jewelry brand with a strong yet refined aesthetic. The focus was on capturing the warmth and depth of the season, translating the brand’s identity into visuals that feel confident, modern, and timeless. A story of craftsmanship and character, told through rich red tones and elegant indoor settings. We also delivered short videos for the website to showcase the jewelry in fluid motion."
+        }
+      },
+      {
+        "type": "Reels",
+        "data": {
+          "videos": [
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Wintercampaign%202025/Reel%206%20-%20Valentine%20post%20%20-%20instagramsong.mp4",
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Wintercampaign%202025/Reel%206%20-%20Valentine%20post%20%20-%20instagramsong.mp4",
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Wintercampaign%202025/Reel%206%20-%20Valentine%20post%20%20-%20instagramsong.mp4",
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Wintercampaign%202025/Reel%206%20-%20Valentine%20post%20%20-%20instagramsong.mp4"
+          ],
+          "thumbnails": [
+            "/uploads/1769627381234-1lsnwe.jpg",
+            "/uploads/1769627384734-1hcxhs.jpg",
+            "/uploads/1769627387968-xgdzo8.jpg",
+            "/uploads/1769627391807-fn9f8p.jpg"
+          ]
+        }
+      },
+      {
+        "type": "WebVideos",
+        "data": {
+          "videos": [
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Companyvideo%20SB%202025/FX3_0710.mp4",
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Companyvideo%20SB%202025/FX3_0710.mp4",
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Companyvideo%20SB%202025/FX3_0710.mp4",
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Companyvideo%20SB%202025/FX3_0710.mp4",
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Companyvideo%20SB%202025/FX3_0710.mp4",
+            "https://blanckmedia-videos.b-cdn.net/Steel%26Barnett/Companyvideo%20SB%202025/FX3_0710.mp4"
+          ]
+        }
+      },
+      {
+        "type": "Results",
+        "data": {
+          "image": "/uploads/1769627432931-8xhfo4.png",
+          "text": "We crafted sleek, modern visuals for Daikin, highlighting their products with clarity, elegance, and a sense of innovation—used across web and social media."
+        }
+      },
+      {
+        "type": "Collage",
+        "data": {
+          "images": [
+            "/uploads/1769627461257-yynvr7.jpg",
+            "/uploads/1769627461263-rzi1w6.png",
+            "/uploads/1769627461264-60b5sw.jpg",
+            "/uploads/1769627461265-2v5wsk.jpg",
+            "/uploads/1769627461272-5omh4f.jpg",
+            "/uploads/1769627461273-zl4j7i.jpg",
+            "/uploads/1769627461285-y87b6b.jpg",
+            "/uploads/1769627461296-t2gnsm.jpg",
+            "/uploads/1769627461299-oxaaaq.png",
+            "/uploads/1769627461300-vdoley.jpg"
+          ]
+        }
+      },
+      {
+        "type": "TextSection",
+        "data": {
+          "text": "For this project, we created a campaign for Steel & Barnett, a men’s jewelry brand with a strong yet refined aesthetic. The focus was on capturing the contrast between power and elegance, translating the brand’s identity into visuals that feel confident, modern, and timeless. A story of craftsmanship and character, told through detail and design. This campaign was filmed during summer with beautiful weather and landscapes. \nWe also delivered short videos that are used to put on the website to showcase the jewelry in a fluid motion. "
+        }
+      }
+    ],
+    "createdAt": "2026-01-28T19:11:15.346Z"
+  }
 ]

@@ -28,6 +28,11 @@ router.get('/contact', (req, res) => {
   res.render('contact', { title: 'Contact', includeContact: true });
 });
 
+// About page
+router.get('/about', (req, res) => {
+  res.render('about', { title: 'About', includeAbout: true });
+});
+
 // Work (projects list)
 router.get('/work', (req, res) => {
   const projects = getAllProjects();

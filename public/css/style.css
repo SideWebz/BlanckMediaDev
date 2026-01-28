@@ -41,6 +41,15 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "PP-Monument_Extd_BLACK";
+  src: url("/fonts/PPMonumentExtended-Black.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 /* ==================================================
    ROOT VARIABLES
    ================================================== */

@@ -1,0 +1,117 @@
+/* ===========================
+   BRAND STORIES CARDS
+=========================== */
+
+.brand-card {
+    position: relative;
+    padding: clamp(7px, 4vw, 20px);
+    border-radius: 2rem;
+    background: #1b1b1b;
+
+    min-height: clamp(120px, 15vw, 180px);
+
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* BIG NUMBER */
+.brand-bg-number {
+    font-family: "Syne", system-ui, sans-serif;
+    position: absolute;
+    bottom: -75px;
+    left: -50px;
+
+    font-size: clamp(220px, 22vw, 280px);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.05em;
+
+    background: linear-gradient(180deg, #ff8a00, #ff5f00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    opacity: 0.9;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* TITLE */
+.brand-card-title {
+    position: relative;
+    z-index: 2;
+
+    font-family: "PP-Monument_Extd_BLACK", system-ui, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+    text-align: center;
+
+    font-size: clamp(1.2rem, 2.5vw, 2.1rem);
+    color: #ffffff;
+
+    max-width: 100%;
+    margin: 0;
+}
+
+/* HOVER FEEL */
+.brand-card:hover .brand-bg-number {
+    opacity: 1;
+}
+
+.sub-title{
+    font-size: clamp(1.0rem, 2vw, 2rem);
+}
+
+
+
+
+.team-card {
+    background-color: #1b1b1b; /* donkere card achtergrond */
+}
+
+.team-img {
+    border-radius: 2rem; /* afgeronde hoeken, kan ook 50% als je rond wilt */
+    object-fit: cover;
+    padding: 0.5rem; /* ruimte rondom image binnen column */
+    width: 100%; /* zorgt dat de image de volledige breedte van de column inneemt */
+}
+
+.text-column {
+    padding: 1rem; /* ruimte tussen text en column edge */
+}
+
+.team-name {
+    font-size: clamp(1.8rem, 3vw, 2.2rem);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.team-role {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-weight: 500;
+    color: #ff8a00;
+    margin-bottom: 1rem;
+}
+
+.team-description {
+    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+/* MOBILE: stack image boven text */
+@media (max-width: 768px) {
+    .team-card {
+        flex-direction: column !important;
+        text-align: center;
+    }
+    .text-column {
+        text-align: center !important;
+        padding-top: 1rem;
+    }
+}
